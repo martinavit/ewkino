@@ -529,7 +529,6 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData){
         outputTree->Branch("_gen_lCharge",               &_gen_lCharge,               "_gen_lCharge[_gen_nL]/I");
         outputTree->Branch("_gen_lMomPdg",               &_gen_lMomPdg,               "_gen_lMomPdg[_gen_nL]/I");
         outputTree->Branch("_gen_lIsPrompt",             &_gen_lIsPrompt,             "_gen_lIsPrompt[_gen_nL]/O");
-        outputTree->Branch("_gen_HT",                    &_gen_HT,                    "_gen_HT/D");
         outputTree->Branch("_lGenIndex",                  &_lGenIndex,                    "_lGenIndex[_nL]/i");
       outputTree->Branch("_lMatchType",                 &_lMatchType,                   "_lMatchType[_nL]/i");
       outputTree->Branch("_lIsPrompt",                  &_lIsPrompt,                    "_lIsPrompt[_nL]/O");
