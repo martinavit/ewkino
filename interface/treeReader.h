@@ -22,156 +22,188 @@ class treeReader {
         static const unsigned nJets_max = 20;
         static const unsigned gen_nL_max = 20;
         static const unsigned gen_nPh_max = 10;
-        ULong_t       _runNb;
-        ULong_t       _lumiBlock;
-        ULong_t       _eventNb;
-        UChar_t         _nVertex;
-        Double_t        _weight;
-        UChar_t         _nLheWeights;
-        Double_t        _lheWeight[110];
-        Float_t         _nTrueInt;
-        Double_t        _gen_met;
-        Double_t        _gen_metPhi;
-        UChar_t         _gen_nL;
-        Double_t        _gen_lPt[gen_nL_max];   
-        Double_t        _gen_lEta[gen_nL_max];   
-        Double_t        _gen_lPhi[gen_nL_max];   
-        Double_t        _gen_lE[gen_nL_max];   
-        UInt_t          _gen_lFlavor[gen_nL_max];   
-        Int_t           _gen_lCharge[gen_nL_max];   
-        Int_t           _gen_lMomPdg[gen_nL_max];   
-        Bool_t          _gen_lIsPrompt[gen_nL_max];   
-        UChar_t         _ttgEventType;
-        UChar_t         _zgEventType;
-        Double_t        _gen_HT;
-        Bool_t          _passTrigger_e;
-        Bool_t          _passTrigger_ee;
-        Bool_t          _passTrigger_eee;
-        Bool_t          _passTrigger_em;
-        Bool_t          _passTrigger_m;
-        Bool_t          _passTrigger_eem;
-        Bool_t          _passTrigger_mm;
-        Bool_t          _passTrigger_emm;
-        Bool_t          _passTrigger_mmm;
-        Bool_t          _passTrigger_et;
-        Bool_t          _passTrigger_mt;
-        Bool_t          _passMETFilters;
-        //TEMPORARY FOR TEST, CAN BE REMOVED LATER
-        Bool_t          _Flag_BadPFMuonFilter;
-        Bool_t          _Flag_BadChargedCandidateFilter;
-        UChar_t         _nL;
-        UChar_t         _nMu;
-        UChar_t         _nEle;
-        UChar_t         _nLight;
-        UChar_t         _nTau;
-        Double_t        _lPt[nL_max];   
-        Double_t        _lEta[nL_max];   
-        Double_t        _lEtaSC[nL_max];   
-        Double_t        _lPhi[nL_max];   
-        Double_t        _lE[nL_max];   
-        UInt_t          _lFlavor[nL_max];   
-        Int_t           _lCharge[nL_max];   
-        Double_t        _dxy[nL_max];   
-        Double_t        _dz[nL_max];   
-        Double_t        _3dIP[nL_max];   
-        Double_t        _3dIPSig[nL_max];   
-        Float_t         _lElectronMva[nL_max];   
-        Float_t         _lElectronMvaHZZ[nL_max];
-        Float_t         _lElectronMvaFall17Iso[nL_max];
-        Float_t         _lElectronMvaFall17NoIso[nL_max];
-        Bool_t          _lElectronPassEmu[nL_max];   
-        Bool_t          _lElectronPassConvVeto[nL_max];
-        Bool_t          _lElectronChargeConst[nL_max];
-        UInt_t          _lElectronMissingHits[nL_max];
-        Double_t        _leptonMvaSUSY16[nL_max];   
-        Double_t        _leptonMvaTTH16[nL_max];
-        Double_t        _leptonMvatZqTTV16[nL_max];
-        Double_t        _leptonMvaSUSY17[nL_max];
-        Double_t        _leptonMvaTTH17[nL_max];
-        Double_t        _leptonMvatZqTTV17[nL_max];
-        Bool_t          _lHNLoose[nL_max];   
-        Bool_t          _lHNFO[nL_max];   
-        Bool_t          _lHNTight[nL_max];   
-        Bool_t          _lEwkLoose[nL_max];   
-        Bool_t          _lEwkFO[nL_max];   
-        Bool_t          _lEwkTight[nL_max];   
-        Bool_t          _lPOGVeto[nL_max];   
-        Bool_t          _lPOGLoose[nL_max];   
-        Bool_t          _lPOGMedium[nL_max];   
-        Bool_t          _lPOGTight[nL_max];   
-        Bool_t          _tauMuonVeto[nL_max];   
-        Bool_t          _tauEleVeto[nL_max];   
-        Bool_t          _decayModeFindingNew[nL_max];   
-        Bool_t          _tauVLooseMvaNew[nL_max];   
-        Bool_t          _tauLooseMvaNew[nL_max];   
-        Bool_t          _tauMediumMvaNew[nL_max];   
-        Bool_t          _tauTightMvaNew[nL_max];   
-        Bool_t          _tauVTightMvaNew[nL_max];   
-        Bool_t          _tauVTightMvaOld[nL_max];   
-        Double_t        _tauAgainstElectronMVA6Raw[nL_max];
-        Double_t        _tauCombinedIsoDBRaw3Hits[nL_max];
-        Double_t        _tauIsoMVAPWdR03oldDMwLT[nL_max];
-        Double_t        _tauIsoMVADBdR03oldDMwLT[nL_max];
-        Double_t        _tauIsoMVADBdR03newDMwLT[nL_max];
-        Double_t        _tauIsoMVAPWnewDMwLT[nL_max];
-        Double_t        _tauIsoMVAPWoldDMwLT[nL_max];
-        Double_t        _relIso[nL_max];   
-        Double_t        _relIso0p4[nL_max];
-        Double_t        _relIso0p4MuDeltaBeta[nL_max];
-        Double_t        _miniIso[nL_max];   
-        Double_t        _miniIsoCharged[nL_max];   
-        Double_t        _ptRel[nL_max];   
-        Double_t        _ptRatio[nL_max];   
-        Double_t        _closestJetCsvV2[nL_max];
-        Double_t        _closestJetDeepCsv_b[nL_max];
-        Double_t        _closestJetDeepCsv_bb[nL_max];
-        UInt_t          _selectedTrackMult[nL_max];   
-        Double_t        _lMuonSegComp[nL_max];   
-        Double_t        _lMuonTrackPt[nL_max];
-        Double_t        _lMuonTrackPtErr[nL_max];
-        Bool_t          _lIsPrompt[nL_max];   
-        Int_t           _lMatchPdgId[nL_max];   
-        Int_t           _lMomPdgId[nL_max];
-        UInt_t          _lProvenance[nL_max];
-        UInt_t          _lProvenanceCompressed[nL_max];
-        UInt_t          _lProvenanceConversion[nL_max];
-        UChar_t         _nJets;
-        Double_t        _jetPt[nJets_max];   
-        Double_t        _jetPt_JECUp[nJets_max];   
-        Double_t        _jetPt_JECDown[nJets_max];   
-        Double_t        _jetPt_Uncorrected[nJets_max];
-        Double_t        _jetPt_L1[nJets_max];
-        Double_t        _jetPt_L2[nJets_max];
-        Double_t        _jetPt_L3[nJets_max];
-        Double_t        _jetEta[nJets_max];   
-        Double_t        _jetPhi[nJets_max];   
-        Double_t        _jetE[nJets_max];   
-        Double_t        _jetCsvV2[nJets_max];   
-        Double_t        _jetDeepCsv_udsg[nJets_max];   
-        Double_t        _jetDeepCsv_b[nJets_max];   
-        Double_t        _jetDeepCsv_c[nJets_max];   
-        Double_t        _jetDeepCsv_bb[nJets_max];   
-        UInt_t          _jetHadronFlavor[nJets_max];   
-        Bool_t          _jetIsLoose[nJets_max];
-        Bool_t          _jetIsTight[nJets_max];
-        Bool_t          _jetIsTightLepVeto[nJets_max];
-        Double_t        _jetNeutralHadronFraction[nJets_max];
-        Double_t        _jetChargedHadronFraction[nJets_max];
-        Double_t        _jetNeutralEmFraction[nJets_max];
-        Double_t        _jetChargedEmFraction[nJets_max];
-        Double_t        _jetHFHadronFraction[nJets_max];
-        Double_t        _jetHFEmFraction[nJets_max];
-        Double_t        _met;
-        Double_t        _metJECDown;
-        Double_t        _metJECUp;
-        Double_t        _metUnclDown;
-        Double_t        _metUnclUp;
-        Double_t        _metPhi;
-        Double_t        _metPhiJECDown;
-        Double_t        _metPhiJECUp;
-        Double_t        _metPhiUnclDown;
-        Double_t        _metPhiUnclUp;       
-        Double_t        _metSignificance;
+   ULong64_t       _runNb;
+   ULong64_t       _lumiBlock;
+   ULong64_t       _eventNb;
+   UChar_t         _nVertex;
+   Bool_t          _passMETFilters;
+   Bool_t          _Flag_goodVertices;
+   Bool_t          _Flag_HBHENoiseFilter;
+   Bool_t          _Flag_HBHENoiseIsoFilter;
+   Bool_t          _Flag_EcalDeadCellTriggerPrimitiveFilter;
+   Bool_t          _Flag_BadPFMuonFilter;
+   Bool_t          _Flag_BadChargedCandidateFilter;
+   Bool_t          _Flag_eeBadScFilter;
+   Bool_t          _updated_ecalBadCalibFilter;
+   Bool_t          _passTrigger_1l;
+   Bool_t          _HLT_IsoMu24;
+   Int_t           _HLT_IsoMu24_prescale;
+   Bool_t          _HLT_IsoMu27;
+   Int_t           _HLT_IsoMu27_prescale;
+   Bool_t          _HLT_Ele32_WPTight_Gsf;
+   Int_t           _HLT_Ele32_WPTight_Gsf_prescale;
+   UInt_t          _nL;
+   UInt_t          _nMu;
+   UInt_t          _nEle;
+   UInt_t          _nLight;
+   UInt_t          _nTau;
+   Double_t        _pvX;
+   Double_t        _pvY;
+   Double_t        _pvZ;
+   Double_t        _pvXErr;
+   Double_t        _pvYErr;
+   Double_t        _pvZErr;
+   UChar_t         _nMu;
+   UChar_t         _nEle;
+   UChar_t         _nLight;
+   UChar_t         _nTau;
+   UInt_t          _nVFit_os;
+   UInt_t          _nVFit;
+   UInt_t          _nGoodLeading;
+   UInt_t          _nGoodDisplaced;
+   Double_t        _vertices_os[4][12];   //[_nVFit_os]
+   Double_t        _lDisplaced_os[4][24];   //[_nVFit_os]
+   Double_t        _vertices[12][12];   //[_nVFit]
+   Double_t        _lDisplaced[12][24];   //[_nVFit]
+   UInt_t          _lHasTrigger[20];   //[_nL]
+   Double_t        _lPt[20];   //[_nL]
+   Double_t        _lEta[20];   //[_nL]
+   Double_t        _lEtaSC[4];   //[_nLight]
+   Double_t        _lPhi[20];   //[_nL]
+   Double_t        _lE[20];   //[_nL]
+   UInt_t          _lFlavor[20];   //[_nL]
+   Int_t           _lCharge[20];   //[_nL]
+   Double_t        _dxy[20];   //[_nL]
+   Double_t        _dz[20];   //[_nL]
+   Double_t        _3dIP[20];   //[_nL]
+   Double_t        _3dIPSig[20];   //[_nL]
+   Double_t        _2dIP[20];   //[_nL]
+   Double_t        _2dIPSig[20];   //[_nL]
+   Bool_t          _lElectronPassEmu[4];   //[_nLight]
+   Bool_t          _lLooseCBwoIsolationwoMissingInnerhitswoConversionVeto[20];   //[_nL]
+   Bool_t          _lElectronPassConvVeto[4];   //[_nLight]
+   Bool_t          _lElectronChargeConst[4];   //[_nLight]
+   UInt_t          _lElectronMissingHits[4];   //[_nLight]
+   Bool_t          _lPOGVeto[20];   //[_nL]
+   Bool_t          _lPOGLoose[20];   //[_nL]
+   Bool_t          _lPOGMedium[20];   //[_nL]
+   Bool_t          _lPOGTight[20];   //[_nL]
+   Bool_t          _lGlobalMuon[4];   //[_nMu]
+   Bool_t          _lTrackerMuon[4];   //[_nMu]
+   Double_t        _lInnerTrackValidFraction[4];   //[_nMu]
+   Double_t        _lGlobalTrackNormalizeChi2[4];   //[_nMu]
+   Double_t        _lCQChi2Position[4];   //[_nMu]
+   Double_t        _lCQTrackKink[4];   //[_nMu]
+   UInt_t          _lNumberOfMatchedStation[4];   //[_nMu]
+   UInt_t          _lNumberOfValidPixelHits[4];   //[_nMu]
+   UInt_t          _lTrackerLayersWithMeasurement[4];   //[_nMu]
+   Int_t           _lSimType[4];   //[_nMu]
+   Int_t           _lSimExtType[4];   //[_nMu]
+   Int_t           _lSimFlavour[4];   //[_nMu]
+   Int_t           _muDTStationsWithValidHits[4];   //[_nMu]
+   Int_t           _muCSCStationsWithValidHits[4];   //[_nMu]
+   Int_t           _muRPCStationsWithValidHits[4];   //[_nMu]
+   Int_t           _muMuonStationsWithValidHits[4];   //[_nMu]
+   Int_t           _lMuRPCTimenDof[4];   //[_nMu]
+   Int_t           _lMuTimenDof[4];   //[_nMu]
+   Double_t        _lMuRPCTime[4];   //[_nMu]
+   Double_t        _lMuRPCTimeErr[4];   //[_nMu]
+   Double_t        _lMuTime[4];   //[_nMu]
+   Double_t        _lMuTimeErr[4];   //[_nMu]
+   UInt_t          _muNumberInnerHits[4];   //[_nMu]
+   Bool_t          _lEleIsEB[4];   //[_nLight]
+   Bool_t          _lEleIsEE[4];   //[_nLight]
+   Double_t        _lEleSuperClusterOverP[4];   //[_nLight]
+   Double_t        _lEleEcalEnergy[4];   //[_nLight]
+   Double_t        _lElefull5x5SigmaIetaIeta[4];   //[_nLight]
+   Double_t        _lEleDEtaInSeed[4];   //[_nLight]
+   Double_t        _lEleDeltaPhiSuperClusterTrackAtVtx[4];   //[_nLight]
+   Double_t        _lElehadronicOverEm[4];   //[_nLight]
+   Double_t        _lEleInvMinusPInv[4];   //[_nLight]
+   Double_t        _puCorr[4];   //[_nLight]
+   Double_t        _absIso03[20];   //[_nL]
+   Double_t        _absIso04[4];   //[_nMu]
+   Double_t        _sumNeutralHadronEt04[4];   //[_nMu]
+   Double_t        _sumChargedHadronPt04[4];   //[_nMu]
+   Double_t        _sumPhotonEt04[4];   //[_nMu]
+   Double_t        _sumNeutralHadronEt03[4];   //[_nLight]
+   Double_t        _sumChargedHadronPt03[4];   //[_nLight]
+   Double_t        _sumPhotonEt03[4];   //[_nLight]
+   Double_t        _trackIso[4];   //[_nLight]
+   Double_t        _ecalIso[4];   //[_nLight]
+   Double_t        _hcalIso[4];   //[_nLight]
+   Double_t        _ecalPFClusterIso[4];   //[_nLight]
+   Double_t        _hcalPFClusterIso[4];   //[_nLight]
+   Bool_t          _tauMuonVeto[20];   //[_nL]
+   Double_t        _relIso[4];   //[_nLight]
+   Double_t        _relIso0p4[4];   //[_nLight]
+   Double_t        _relIso0p4MuDeltaBeta[4];   //[_nMu]
+   Double_t        _ptRel[4];   //[_nLight]
+   Double_t        _ptRatio[4];   //[_nLight]
+   Double_t        _closestJetCsvV2[4];   //[_nLight]
+   Double_t        _closestJetDeepCsv_b[4];   //[_nLight]
+   Double_t        _closestJEC[4];   //[_nLight]
+   Double_t        _closest_lepAwareJetE[4];   //[_nLight]
+   Double_t        _closest_lepAwareJetPx[4];   //[_nLight]
+   Double_t        _closest_lepAwareJetPy[4];   //[_nLight]
+   Double_t        _closest_lepAwareJetPz[4];   //[_nLight]
+   Double_t        _closest_l1JetE[4];   //[_nLight]
+   Double_t        _closest_l1JetPx[4];   //[_nLight]
+   Double_t        _closest_l1JetPy[4];   //[_nLight]
+   Double_t        _closest_l1JetPz[4];   //[_nLight]
+   Double_t        _closest_lJetE[4];   //[_nLight]
+   Double_t        _closest_lJetPx[4];   //[_nLight]
+   Double_t        _closest_lJetPy[4];   //[_nLight]
+   Double_t        _closest_lJetPz[4];   //[_nLight]
+   Double_t        _closestJetDeepCsv_bb[4];   //[_nLight]
+   UInt_t          _selectedTrackMult[4];   //[_nLight]
+   Double_t        _lMuonSegComp[4];   //[_nMu]
+   Double_t        _lMuonTrackPt[4];   //[_nMu]
+   Double_t        _lMuonTrackPtErr[4];   //[_nMu]
+   UInt_t          _nJets;
+   Double_t        _jetPt[20];   //[_nJets]
+   Double_t        _jetPt_JECDown[20];   //[_nJets]
+   Double_t        _jetPt_JECUp[20];   //[_nJets]
+   Double_t        _jetSmearedPt[20];   //[_nJets]
+   Double_t        _jetSmearedPt_JECDown[20];   //[_nJets]
+   Double_t        _jetSmearedPt_JECUp[20];   //[_nJets]
+   Double_t        _jetSmearedPt_JERDown[20];   //[_nJets]
+   Double_t        _jetSmearedPt_JERUp[20];   //[_nJets]
+   Double_t        _jetPt_Uncorrected[20];   //[_nJets]
+   Double_t        _jetPt_L1[20];   //[_nJets]
+   Double_t        _jetPt_L2[20];   //[_nJets]
+   Double_t        _jetPt_L3[20];   //[_nJets]
+   Double_t        _jetEta[20];   //[_nJets]
+   Double_t        _jetPhi[20];   //[_nJets]
+   Double_t        _jetE[20];   //[_nJets]
+   Double_t        _jetCsvV2[20];   //[_nJets]
+   Double_t        _jetDeepCsv_udsg[20];   //[_nJets]
+   Double_t        _jetDeepCsv_b[20];   //[_nJets]
+   Double_t        _jetDeepCsv_c[20];   //[_nJets]
+   Double_t        _jetDeepCsv_bb[20];   //[_nJets]
+   UInt_t          _jetHadronFlavor[20];   //[_nJets]
+   Bool_t          _jetIsLoose[20];   //[_nJets]
+   Bool_t          _jetIsTight[20];   //[_nJets]
+   Bool_t          _jetIsTightLepVeto[20];   //[_nJets]
+   Double_t        _jetNeutralHadronFraction[20];   //[_nJets]
+   Double_t        _jetChargedHadronFraction[20];   //[_nJets]
+   Double_t        _jetNeutralEmFraction[20];   //[_nJets]
+   Double_t        _jetChargedEmFraction[20];   //[_nJets]
+   Double_t        _jetHFHadronFraction[20];   //[_nJets]
+   Double_t        _jetHFEmFraction[20];   //[_nJets]
+   Double_t        _met;
+   Double_t        _metRaw;
+   Double_t        _metJECDown;
+   Double_t        _metJECUp;
+   Double_t        _metUnclDown;
+   Double_t        _metUnclUp;
+   Double_t        _metPhi;
+   Double_t        _metRawPhi;
+   Double_t        _metPhiJECDown;
+   Double_t        _metPhiJECUp;
+   Double_t        _metPhiUnclDown;
+   Double_t        _metPhiUnclUp;
+   Double_t        _metSignificance;
 
 
         //Constructor
@@ -374,157 +406,186 @@ class treeReader {
         void readSamples(const std::string&, const std::string&, std::vector<Sample>&);
 
         //list of branches
-        TBranch        *b__runNb;   
-        TBranch        *b__lumiBlock;   
-        TBranch        *b__eventNb;   
-        TBranch        *b__nVertex;   
-        TBranch        *b__weight;   
-        TBranch        *b__nLheWeights;   
-        TBranch        *b__lheWeight;   
-        TBranch        *b__nTrueInt;   
-        TBranch        *b__gen_met;   
-        TBranch        *b__gen_metPhi;   
-        TBranch        *b__gen_nL;   
-        TBranch        *b__gen_lPt;   
-        TBranch        *b__gen_lEta;   
-        TBranch        *b__gen_lPhi;   
-        TBranch        *b__gen_lE;   
-        TBranch        *b__gen_lFlavor;   
-        TBranch        *b__gen_lCharge;   
-        TBranch        *b__gen_lMomPdg;   
-        TBranch        *b__gen_lIsPrompt;   
-        TBranch        *b__ttgEventType;
-        TBranch        *b__zgEventType;
-        TBranch        *b__gen_HT;
-        TBranch        *b__passTrigger_e;   
-        TBranch        *b__passTrigger_ee;   
-        TBranch        *b__passTrigger_eee;   
-        TBranch        *b__passTrigger_em;   
-        TBranch        *b__passTrigger_m;   
-        TBranch        *b__passTrigger_eem;   
-        TBranch        *b__passTrigger_mm;   
-        TBranch        *b__passTrigger_emm;   
-        TBranch        *b__passTrigger_mmm;   
-        TBranch        *b__passTrigger_et;
-        TBranch        *b__passTrigger_mt;
-        TBranch        *b__passMETFilters;   
-        //TEMPORARY FOR CHECK, CAN BE REMOVED LATER
-        TBranch        *b__Flag_BadPFMuonFilter;
-        TBranch        *b__Flag_BadChargedCandidateFilter;
-        //////////////////////////////////////////
-        TBranch        *b__nL;   
-        TBranch        *b__nMu;   
-        TBranch        *b__nEle;   
-        TBranch        *b__nLight;   
-        TBranch        *b__nTau;   
-        TBranch        *b__lPt;   
-        TBranch        *b__lEta;   
-        TBranch        *b__lEtaSC;   
-        TBranch        *b__lPhi;   
-        TBranch        *b__lE;   
-        TBranch        *b__lFlavor;   
-        TBranch        *b__lCharge;   
-        TBranch        *b__dxy;   
-        TBranch        *b__dz;   
-        TBranch        *b__3dIP;   
-        TBranch        *b__3dIPSig;   
-        TBranch        *b__lElectronMva;   
-        TBranch        *b__lElectronMvaHZZ;
-        TBranch        *b__lElectronMvaFall17Iso;
-        TBranch        *b__lElectronMvaFall17NoIso;
-        TBranch        *b__lElectronPassEmu;   
-        TBranch        *b__lElectronPassConvVeto;
-        TBranch        *b__lElectronChargeConst;
-        TBranch        *b__lElectronMissingHits;
-        TBranch        *b__leptonMvaSUSY16;
-        TBranch        *b__leptonMvaTTH16;
-        TBranch        *b__leptonMvatZqTTV16;
-        TBranch        *b__leptonMvaSUSY17;
-        TBranch        *b__leptonMvaTTH17;
-        TBranch        *b__leptonMvatZqTTV17;
-        TBranch        *b__lHNLoose;   
-        TBranch        *b__lHNFO;   
-        TBranch        *b__lHNTight;   
-        TBranch        *b__lEwkLoose;   
-        TBranch        *b__lEwkFO;   
-        TBranch        *b__lEwkTight;   
-        TBranch        *b__lPOGVeto;   
-        TBranch        *b__lPOGLoose;   
-        TBranch        *b__lPOGMedium;   
-        TBranch        *b__lPOGTight;   
-        TBranch        *b__tauMuonVeto;   
-        TBranch        *b__tauEleVeto;   
-        TBranch        *b__decayModeFindingNew;   
-        TBranch        *b__tauVLooseMvaNew;   
-        TBranch        *b__tauLooseMvaNew;   
-        TBranch        *b__tauMediumMvaNew;   
-        TBranch        *b__tauTightMvaNew;   
-        TBranch        *b__tauVTightMvaNew;   
-        TBranch        *b__tauVTightMvaOld;   
-        TBranch        *b__tauAgainstElectronMVA6Raw;
-        TBranch        *b__tauCombinedIsoDBRaw3Hits;
-        TBranch        *b__tauIsoMVAPWdR03oldDMwLT;
-        TBranch        *b__tauIsoMVADBdR03oldDMwLT;
-        TBranch        *b__tauIsoMVADBdR03newDMwLT;
-        TBranch        *b__tauIsoMVAPWnewDMwLT;
-        TBranch        *b__tauIsoMVAPWoldDMwLT;
-        TBranch        *b__relIso;   
-        TBranch        *b__relIso0p4;
-        TBranch        *b__relIso0p4MuDeltaBeta;
-        TBranch        *b__miniIso;   
-        TBranch        *b__miniIsoCharged;   
-        TBranch        *b__ptRel;   
-        TBranch        *b__ptRatio;   
-        TBranch        *b__closestJetCsvV2;
-        TBranch        *b__closestJetDeepCsv_b;
-        TBranch        *b__closestJetDeepCsv_bb;
-        TBranch        *b__selectedTrackMult;   
-        TBranch        *b__lMuonSegComp;   
-        TBranch        *b__lMuonTrackPt;
-        TBranch        *b__lMuonTrackPtErr;
-        TBranch        *b__lIsPrompt;   
-        TBranch        *b__lMatchPdgId;   
-        TBranch        *b__lMomPdgId;
-        TBranch        *b__lProvenance;
-        TBranch        *b__lProvenanceCompressed;
-        TBranch        *b__lProvenanceConversion;
-        TBranch        *b__nJets;   
-        TBranch        *b__jetPt;   
-        TBranch        *b__jetPt_JECUp;   
-        TBranch        *b__jetPt_JECDown;   
-        TBranch        *b__jetPt_Uncorrected;
-        TBranch        *b__jetPt_L1;
-        TBranch        *b__jetPt_L2;
-        TBranch        *b__jetPt_L3;
-        TBranch        *b__jetEta;   
-        TBranch        *b__jetPhi;   
-        TBranch        *b__jetE;   
-        TBranch        *b__jetCsvV2;   
-        TBranch        *b__jetDeepCsv_udsg;   
-        TBranch        *b__jetDeepCsv_b;   
-        TBranch        *b__jetDeepCsv_c;   
-        TBranch        *b__jetDeepCsv_bb;   
-        TBranch        *b__jetHadronFlavor;   
-        TBranch        *b__jetId;   
-        TBranch        *b__jetIsLoose;
-        TBranch        *b__jetIsTight;
-        TBranch        *b__jetIsTightLepVeto;
-        TBranch        *b__jetNeutralHadronFraction;
-        TBranch        *b__jetChargedHadronFraction;
-        TBranch        *b__jetNeutralEmFraction;
-        TBranch        *b__jetChargedEmFraction;
-        TBranch        *b__jetHFHadronFraction;
-        TBranch        *b__jetHFEmFraction;
-        TBranch        *b__met;   
-        TBranch        *b__metJECDown;   
-        TBranch        *b__metJECUp;   
-        TBranch        *b__metUnclDown;   
-        TBranch        *b__metUnclUp;   
-        TBranch        *b__metPhi;   
-        TBranch        *b__metPhiJECDown;   
-        TBranch        *b__metPhiJECUp;   
-        TBranch        *b__metPhiUnclDown;   
-        TBranch        *b__metPhiUnclUp;   
-        TBranch        *b__metSignificance;
+        TBranch        *b__runNb;   //!
+   TBranch        *b__lumiBlock;   //!
+   TBranch        *b__eventNb;   //!
+   TBranch        *b__nVertex;   //!
+   TBranch        *b__passMETFilters;   //!
+   TBranch        *b__Flag_goodVertices;   //!
+   TBranch        *b__Flag_HBHENoiseFilter;   //!
+   TBranch        *b__Flag_HBHENoiseIsoFilter;   //!
+   TBranch        *b__Flag_EcalDeadCellTriggerPrimitiveFilter;   //!
+   TBranch        *b__Flag_BadPFMuonFilter;   //!
+   TBranch        *b__Flag_BadChargedCandidateFilter;   //!
+   TBranch        *b__Flag_eeBadScFilter;   //!
+   TBranch        *b__updated_ecalBadCalibFilter;   //!
+   TBranch        *b__passTrigger_1l;   //!
+   TBranch        *b__HLT_IsoMu24;   //!
+   TBranch        *b__HLT_IsoMu24_prescale;   //!
+   TBranch        *b__HLT_IsoMu27;   //!
+   TBranch        *b__HLT_IsoMu27_prescale;   //!
+   TBranch        *b__HLT_Ele32_WPTight_Gsf;   //!
+   TBranch        *b__HLT_Ele32_WPTight_Gsf_prescale;   //!
+   TBranch        *b__nL;   //!
+   TBranch        *b__nMu;   //!
+   TBranch        *b__nEle;   //!
+   TBranch        *b__nLight;   //!
+   TBranch        *b__nTau;   //!
+   TBranch        *b__pvX;   //!
+   TBranch        *b__pvY;   //!
+   TBranch        *b__pvZ;   //!
+   TBranch        *b__pvXErr;   //!
+   TBranch        *b__pvYErr;   //!
+   TBranch        *b__pvZErr;   //!
+   TBranch        *b__nMu;   //!
+   TBranch        *b__nEle;   //!
+   TBranch        *b__nLight;   //!
+   TBranch        *b__nTau;   //!
+   TBranch        *b__nVFit_os;   //!
+   TBranch        *b__nVFit;   //!
+   TBranch        *b__nGoodLeading;   //!
+   TBranch        *b__nGoodDisplaced;   //!
+   TBranch        *b__vertices_os;   //!
+   TBranch        *b__lDisplaced_os;   //!
+   TBranch        *b__vertices;   //!
+   TBranch        *b__lDisplaced;   //!
+   TBranch        *b__lHasTrigger;   //!
+   TBranch        *b__lPt;   //!
+   TBranch        *b__lEta;   //!
+   TBranch        *b__lEtaSC;   //!
+   TBranch        *b__lPhi;   //!
+   TBranch        *b__lE;   //!
+   TBranch        *b__lFlavor;   //!
+   TBranch        *b__lCharge;   //!
+   TBranch        *b__dxy;   //!
+   TBranch        *b__dz;   //!
+   TBranch        *b__3dIP;   //!
+   TBranch        *b__3dIPSig;   //!
+   TBranch        *b__2dIP;   //!
+   TBranch        *b__2dIPSig;   //!
+   TBranch        *b__lElectronPassEmu;   //!
+   TBranch        *b__lLooseCBwoIsolationwoMissingInnerhitswoConversionVeto;   //!
+   TBranch        *b__lElectronPassConvVeto;   //!
+   TBranch        *b__lElectronChargeConst;   //!
+   TBranch        *b__lElectronMissingHits;   //!
+   TBranch        *b__lPOGVeto;   //!
+   TBranch        *b__lPOGLoose;   //!
+   TBranch        *b__lPOGMedium;   //!
+   TBranch        *b__lPOGTight;   //!
+   TBranch        *b__lGlobalMuon;   //!
+   TBranch        *b__lTrackerMuon;   //!
+   TBranch        *b__lInnerTrackValidFraction;   //!
+   TBranch        *b__lGlobalTrackNormalizeChi2;   //!
+   TBranch        *b__lCQChi2Position;   //!
+   TBranch        *b__lCQTrackKink;   //!
+   TBranch        *b__lNumberOfMatchedStation;   //!
+   TBranch        *b__lNumberOfValidPixelHits;   //!
+   TBranch        *b__lTrackerLayersWithMeasurement;   //!
+   TBranch        *b__lSimType;   //!
+   TBranch        *b__lSimExtType;   //!
+   TBranch        *b__lSimFlavour;   //!
+   TBranch        *b__muDTStationsWithValidHits;   //!
+   TBranch        *b__muCSCStationsWithValidHits;   //!
+   TBranch        *b__muRPCStationsWithValidHits;   //!
+   TBranch        *b__muMuonStationsWithValidHits;   //!
+   TBranch        *b__lMuRPCTimenDof;   //!
+   TBranch        *b__lMuTimenDof;   //!
+   TBranch        *b__lMuRPCTime;   //!
+   TBranch        *b__lMuRPCTimeErr;   //!
+   TBranch        *b__lMuTime;   //!
+   TBranch        *b__lMuTimeErr;   //!
+   TBranch        *b__muNumberInnerHits;   //!
+   TBranch        *b__lEleIsEB;   //!
+   TBranch        *b__lEleIsEE;   //!
+   TBranch        *b__lEleSuperClusterOverP;   //!
+   TBranch        *b__lEleEcalEnergy;   //!
+   TBranch        *b__lElefull5x5SigmaIetaIeta;   //!
+   TBranch        *b__lEleDEtaInSeed;   //!
+   TBranch        *b__lEleDeltaPhiSuperClusterTrackAtVtx;   //!
+   TBranch        *b__lElehadronicOverEm;   //!
+   TBranch        *b__lEleInvMinusPInv;   //!
+   TBranch        *b__puCorr;   //!
+   TBranch        *b__absIso03;   //!
+   TBranch        *b__absIso04;   //!
+   TBranch        *b__sumNeutralHadronEt04;   //!
+   TBranch        *b__sumChargedHadronPt04;   //!
+   TBranch        *b__sumPhotonEt04;   //!
+   TBranch        *b__sumNeutralHadronEt03;   //!
+   TBranch        *b__sumChargedHadronPt03;   //!
+   TBranch        *b__sumPhotonEt03;   //!
+   TBranch        *b__trackIso;   //!
+   TBranch        *b__ecalIso;   //!
+   TBranch        *b__hcalIso;   //!
+   TBranch        *b__ecalPFClusterIso;   //!
+   TBranch        *b__hcalPFClusterIso;   //!
+   TBranch        *b__relIso;   //!
+   TBranch        *b__relIso0p4;   //!
+   TBranch        *b__relIso0p4MuDeltaBeta;   //!
+   TBranch        *b__ptRel;   //!
+   TBranch        *b__ptRatio;   //!
+   TBranch        *b__closestJetCsvV2;   //!
+   TBranch        *b__closestJetDeepCsv_b;   //!
+   TBranch        *b__closestJEC;   //!
+   TBranch        *b__closest_lepAwareJetE;   //!
+   TBranch        *b__closest_lepAwareJetPx;   //!
+   TBranch        *b__closest_lepAwareJetPy;   //!
+   TBranch        *b__closest_lepAwareJetPz;   //!
+   TBranch        *b__closest_l1JetE;   //!
+   TBranch        *b__closest_l1JetPx;   //!
+   TBranch        *b__closest_l1JetPy;   //!
+   TBranch        *b__closest_l1JetPz;   //!
+   TBranch        *b__closest_lJetE;   //!
+   TBranch        *b__closest_lJetPx;   //!
+   TBranch        *b__closest_lJetPy;   //!
+   TBranch        *b__closest_lJetPz;   //!
+   TBranch        *b__closestJetDeepCsv_bb;   //!
+   TBranch        *b__selectedTrackMult;   //!
+   TBranch        *b__lMuonSegComp;   //!
+   TBranch        *b__lMuonTrackPt;   //!
+   TBranch        *b__lMuonTrackPtErr;   //!
+   TBranch        *b__nJets;   //!
+   TBranch        *b__jetPt;   //!
+   TBranch        *b__jetPt_JECDown;   //!
+   TBranch        *b__jetPt_JECUp;   //!
+   TBranch        *b__jetSmearedPt;   //!
+   TBranch        *b__jetSmearedPt_JECDown;   //!
+   TBranch        *b__jetSmearedPt_JECUp;   //!
+   TBranch        *b__jetSmearedPt_JERDown;   //!
+   TBranch        *b__jetSmearedPt_JERUp;   //!
+   TBranch        *b__jetPt_Uncorrected;   //!
+   TBranch        *b__jetPt_L1;   //!
+   TBranch        *b__jetPt_L2;   //!
+   TBranch        *b__jetPt_L3;   //!
+   TBranch        *b__jetEta;   //!
+   TBranch        *b__jetPhi;   //!
+   TBranch        *b__jetE;   //!
+   TBranch        *b__jetCsvV2;   //!
+   TBranch        *b__jetDeepCsv_udsg;   //!
+   TBranch        *b__jetDeepCsv_b;   //!
+   TBranch        *b__jetDeepCsv_c;   //!
+   TBranch        *b__jetDeepCsv_bb;   //!
+   TBranch        *b__jetHadronFlavor;   //!
+   TBranch        *b__jetIsLoose;   //!
+   TBranch        *b__jetIsTight;   //!
+   TBranch        *b__jetIsTightLepVeto;   //!
+   TBranch        *b__jetNeutralHadronFraction;   //!
+   TBranch        *b__jetChargedHadronFraction;   //!
+   TBranch        *b__jetNeutralEmFraction;   //!
+   TBranch        *b__jetChargedEmFraction;   //!
+   TBranch        *b__jetHFHadronFraction;   //!
+   TBranch        *b__jetHFEmFraction;   //!
+   TBranch        *b__met;   //!
+   TBranch        *b__metRaw;   //!
+   TBranch        *b__metJECDown;   //!
+   TBranch        *b__metJECUp;   //!
+   TBranch        *b__metUnclDown;   //!
+   TBranch        *b__metUnclUp;   //!
+   TBranch        *b__metPhi;   //!
+   TBranch        *b__metRawPhi;   //!
+   TBranch        *b__metPhiJECDown;   //!
+   TBranch        *b__metPhiJECUp;   //!
+   TBranch        *b__metPhiUnclDown;   //!
+   TBranch        *b__metPhiUnclUp;   //!
+   TBranch        *b__metSignificance;   //!
 };
 #endif
