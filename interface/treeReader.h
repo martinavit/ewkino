@@ -92,10 +92,6 @@ Double_t        _pvZ;
 Double_t        _pvXErr;
 Double_t        _pvYErr;
 Double_t        _pvZErr;
-UChar_t         _nMu;
-UChar_t         _nEle;
-UChar_t         _nLight;
-UChar_t         _nTau;
 UInt_t          _nVFit_os;
 UInt_t          _nVFit;
 UInt_t          _nGoodLeading;
@@ -593,10 +589,6 @@ Double_t        _metSignificance;
    TBranch        *b__pvXErr;   //!
    TBranch        *b__pvYErr;   //!
    TBranch        *b__pvZErr;   //!
-   TBranch        *b__nMu;   //!
-   TBranch        *b__nEle;   //!
-   TBranch        *b__nLight;   //!
-   TBranch        *b__nTau;   //!
    TBranch        *b__nVFit_os;   //!
    TBranch        *b__nVFit;   //!
    TBranch        *b__nGoodLeading;   //!
