@@ -59,6 +59,6 @@ foldersMC17=2017_mc9March/*/*2017_mc9March
 foldersLeptonMva16=*CUETP8M1*/*leptonMvaTrainingList-v5
 foldersLeptonMva17=TTTo*CP5*/*leptonMvaTrainingList-v5
 #for d in $foldersMC $foldersMC17 $foldersData $foldersData17                        #skim all samples 
-for d in foldersData
+for d in $foldersData
     do skimSample $d $baseFolder
 done
