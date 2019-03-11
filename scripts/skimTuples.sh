@@ -50,15 +50,15 @@ skimSample(){                                           #function to skim one sa
     rm $submit                                          #remove temporary submit file
 }
 
-baseFolder=/pnfs/iihe/cms/store/user/wverbeke/heavyNeutrino
+baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino
 cd $baseFolder
-foldersData=*/*2016LeptonicDataList_v22p2
-foldersMC=*/*ewkino2016MCList-v22p2
-foldersData17=*/*2017LeptonicDataList_v22p3
-foldersMC17=*/*ewkino2017MCList-v22p2
+foldersData=2016_legacy9March/*/*2016_legacy9March
+foldersMC=2016_94Mc9March2/*/*2016_94Mc9March2
+foldersData17=2017_rereco9March/*/*2017_rereco9March
+foldersMC17=2017_mc9March/*/*2017_mc9March
 foldersLeptonMva16=*CUETP8M1*/*leptonMvaTrainingList-v5
 foldersLeptonMva17=TTTo*CP5*/*leptonMvaTrainingList-v5
 #for d in $foldersMC $foldersMC17 $foldersData $foldersData17                        #skim all samples 
-for d in TTJets*CP5*/*leptonMvaTrainingList-v5
+for d in foldersData
     do skimSample $d $baseFolder
 done
