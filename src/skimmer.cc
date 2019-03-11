@@ -96,6 +96,7 @@ void treeReader::skimTree(const std::string& fileName, std::string outputDirecto
 int main(int argc, char* argv[]){
     treeReader reader;
     bool isData = false;
+    bool Is2016 = true;
     if(argc != 0){
         std::vector<std::string> datasets = {"SingleElectron", "SingleMuon", "DoubleEG", "DoubleMuon", "MuonEG"}; 
         for(auto it = datasets.cbegin(); it != datasets.cend(); ++it){
@@ -106,11 +107,11 @@ int main(int argc, char* argv[]){
     }
     switch(argc){
         case 2:{
-                   reader.skimTree(argv[1], "", isData);
+                   reader.skimTree(argv[1], "", isData, Is2016);
                    return 0;
                }
         case 3:{
-                   reader.skimTree(argv[1], argv[2], isData);
+                   reader.skimTree(argv[1], argv[2], isData, Is2016);
                    return 0;
                }
         default:{
