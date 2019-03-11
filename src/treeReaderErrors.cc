@@ -72,11 +72,11 @@ void treeReader::printLeptonContent( std::ostream& os ) const{
             os << "fail_tight\t";
         }
 
-        os << "leptonMVA16 = " << _leptonMvatZqTTV16[l];
-        os << "\tleptonMVA17 = " << _leptonMvatZqTTV17[l];
-        os << "\n";
+        //os << "leptonMVA16 = " << _leptonMvatZqTTV16[l];
+        //os << "\tleptonMVA17 = " << _leptonMvatZqTTV17[l];
+        //os << "\n";
 
-        os << "lepton MVA inputs : selectedTrackMult = " << _selectedTrackMult[l]
+        /*os << "lepton MVA inputs : selectedTrackMult = " << _selectedTrackMult[l]
             << "\tminiIsoCharged = " << _miniIsoCharged[l]
             << "\tminiIsoNeutral = " << _miniIso[l] - _miniIsoCharged[l]
             << "\tptRel = " << _ptRel[l]
@@ -85,7 +85,7 @@ void treeReader::printLeptonContent( std::ostream& os ) const{
             << "\tdeepCsvClosestJet = " << closestJetDeepCSV(l)
             << "\tsip3d = " << _3dIPSig[l]
             << "\tdxy = " << _dxy[l]
-            << "\tdz = " << _dz[l];
+            << "\tdz = " << _dz[l];*/
         if( _lFlavor[l] == 0 ){
             os << "\telectronMvaSpring16GP = " << _lElectronMva[l] << "\telectronMvaFall17NoIso = " << _lElectronMvaFall17NoIso[l];
         } else {
