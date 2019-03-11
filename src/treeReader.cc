@@ -351,7 +351,7 @@ void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016)
     }
 }
 
-void treeReader::setOutputTree(TTree* outputTree, const bool isData){
+void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool Is2016){
     outputTree->Branch("_runNb",                        &_runNb,                        "_runNb/l");
     outputTree->Branch("_lumiBlock",                    &_lumiBlock,                    "_lumiBlock/l");
     outputTree->Branch("_eventNb",                      &_eventNb,                      "_eventNb/l");
