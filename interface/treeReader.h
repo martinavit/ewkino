@@ -73,6 +73,8 @@ Bool_t          _Flag_BadPFMuonFilter;
 Bool_t          _Flag_BadChargedCandidateFilter;
 Bool_t          _updated_ecalBadCalibFilter;
 Bool_t          _passTrigger_1l;
+Bool_t          _HLT_Ele27_WPTight_Gsf;
+Int_t          _HLT_Ele27_WPTight_Gsf_prescale;
 Bool_t          _HLT_IsoMu27;
 Int_t           _HLT_IsoMu27_prescale;
 Bool_t          _HLT_IsoMu24;
