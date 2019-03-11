@@ -26,6 +26,44 @@ class treeReader {
    ULong64_t       _lumiBlock;
    ULong64_t       _eventNb;
    UChar_t         _nVertex;
+   Float_t         _nTrueInt;
+   Double_t        _weight;
+   Double_t        _lheHTIncoming;
+   Double_t        _ctauHN;
+   UInt_t          _nLheTau;
+   UInt_t          _nLheWeights;
+   Double_t        _lheWeight[110];   //[_nLheWeights]
+   UInt_t          _nPsWeights;
+   Double_t        _psWeight[14];   //[_nPsWeights]
+   UInt_t          _ttgEventType;
+   UInt_t          _zgEventType;
+   Double_t        _gen_met;
+   Double_t        _gen_metPhi;
+   UInt_t          _gen_nPh;
+   UInt_t          _gen_phStatus[gen_nL_max]   //[_gen_nPh]
+   Double_t        _gen_phPt[gen_nL_max]   //[_gen_nPh]
+   Double_t        _gen_phEta[gen_nL_max]   //[_gen_nPh]
+   Double_t        _gen_phPhi[gen_nL_max]   //[_gen_nPh]
+   Double_t        _gen_phE[gen_nL_max]   //[_gen_nPh]
+   Int_t           _gen_phMomPdg[gen_nL_max]   //[_gen_nPh]
+   Bool_t          _gen_phIsPrompt[gen_nL_max]   //[_gen_nPh]
+   Double_t        _gen_phMinDeltaR[gen_nL_max]   //[_gen_nPh]
+   Bool_t          _gen_phPassParentage[gen_nL_max]   //[_gen_nPh]
+   UInt_t          _gen_nL;
+   Double_t        _gen_pdgID[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_lPt[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_lEta[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_lPhi[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_lE[gen_nL_max]   //[_gen_nL]
+   UInt_t          _gen_lFlavor[gen_nL_max]   //[_gen_nL]
+   Int_t           _gen_lCharge[gen_nL_max]   //[_gen_nL]
+   Int_t           _gen_lMomPdg[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_vertex_x[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_vertex_y[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_vertex_z[gen_nL_max]   //[_gen_nL]
+   Bool_t          _gen_lIsPrompt[gen_nL_max]   //[_gen_nL]
+   Double_t        _gen_lMinDeltaR[gen_nL_max]   //[_gen_nL]
+   Bool_t          _gen_lPassParentage[gen_nL_max]   //[_gen_nL]
    Bool_t          _passMETFilters;
    Bool_t          _Flag_goodVertices;
    Bool_t          _Flag_HBHENoiseFilter;
@@ -33,15 +71,16 @@ class treeReader {
    Bool_t          _Flag_EcalDeadCellTriggerPrimitiveFilter;
    Bool_t          _Flag_BadPFMuonFilter;
    Bool_t          _Flag_BadChargedCandidateFilter;
-   Bool_t          _Flag_eeBadScFilter;
    Bool_t          _updated_ecalBadCalibFilter;
    Bool_t          _passTrigger_1l;
-   Bool_t          _HLT_IsoMu24;
-   Int_t           _HLT_IsoMu24_prescale;
    Bool_t          _HLT_IsoMu27;
    Int_t           _HLT_IsoMu27_prescale;
+   Bool_t          _HLT_IsoMu24;
+   Int_t           _HLT_IsoMu24_prescale;
    Bool_t          _HLT_Ele32_WPTight_Gsf;
    Int_t           _HLT_Ele32_WPTight_Gsf_prescale;
+   Bool_t          _HLT_Ele35_WPTight_Gsf;
+   Int_t           _HLT_Ele35_WPTight_Gsf_prescale;
    UInt_t          _nL;
    UInt_t          _nMu;
    UInt_t          _nEle;
@@ -61,136 +100,212 @@ class treeReader {
    UInt_t          _nVFit;
    UInt_t          _nGoodLeading;
    UInt_t          _nGoodDisplaced;
-   Double_t        _vertices_os[4][12];   //[_nVFit_os]
-   Double_t        _lDisplaced_os[4][24];   //[_nVFit_os]
-   Double_t        _vertices[12][12];   //[_nVFit]
-   Double_t        _lDisplaced[12][24];   //[_nVFit]
-   UInt_t          _lHasTrigger[20];   //[_nL]
-   Double_t        _lPt[20];   //[_nL]
-   Double_t        _lEta[20];   //[_nL]
-   Double_t        _lEtaSC[4];   //[_nLight]
-   Double_t        _lPhi[20];   //[_nL]
-   Double_t        _lE[20];   //[_nL]
-   UInt_t          _lFlavor[20];   //[_nL]
-   Int_t           _lCharge[20];   //[_nL]
-   Double_t        _dxy[20];   //[_nL]
-   Double_t        _dz[20];   //[_nL]
-   Double_t        _3dIP[20];   //[_nL]
-   Double_t        _3dIPSig[20];   //[_nL]
-   Double_t        _2dIP[20];   //[_nL]
-   Double_t        _2dIPSig[20];   //[_nL]
-   Bool_t          _lElectronPassEmu[4];   //[_nLight]
-   Bool_t          _lLooseCBwoIsolationwoMissingInnerhitswoConversionVeto[20];   //[_nL]
-   Bool_t          _lElectronPassConvVeto[4];   //[_nLight]
-   Bool_t          _lElectronChargeConst[4];   //[_nLight]
-   UInt_t          _lElectronMissingHits[4];   //[_nLight]
-   Bool_t          _lPOGVeto[20];   //[_nL]
-   Bool_t          _lPOGLoose[20];   //[_nL]
-   Bool_t          _lPOGMedium[20];   //[_nL]
-   Bool_t          _lPOGTight[20];   //[_nL]
-   Bool_t          _lGlobalMuon[4];   //[_nMu]
-   Bool_t          _lTrackerMuon[4];   //[_nMu]
-   Double_t        _lInnerTrackValidFraction[4];   //[_nMu]
-   Double_t        _lGlobalTrackNormalizeChi2[4];   //[_nMu]
-   Double_t        _lCQChi2Position[4];   //[_nMu]
-   Double_t        _lCQTrackKink[4];   //[_nMu]
-   UInt_t          _lNumberOfMatchedStation[4];   //[_nMu]
-   UInt_t          _lNumberOfValidPixelHits[4];   //[_nMu]
-   UInt_t          _lTrackerLayersWithMeasurement[4];   //[_nMu]
-   Int_t           _lSimType[4];   //[_nMu]
-   Int_t           _lSimExtType[4];   //[_nMu]
-   Int_t           _lSimFlavour[4];   //[_nMu]
-   Int_t           _muDTStationsWithValidHits[4];   //[_nMu]
-   Int_t           _muCSCStationsWithValidHits[4];   //[_nMu]
-   Int_t           _muRPCStationsWithValidHits[4];   //[_nMu]
-   Int_t           _muMuonStationsWithValidHits[4];   //[_nMu]
-   Int_t           _lMuRPCTimenDof[4];   //[_nMu]
-   Int_t           _lMuTimenDof[4];   //[_nMu]
-   Double_t        _lMuRPCTime[4];   //[_nMu]
-   Double_t        _lMuRPCTimeErr[4];   //[_nMu]
-   Double_t        _lMuTime[4];   //[_nMu]
-   Double_t        _lMuTimeErr[4];   //[_nMu]
-   UInt_t          _muNumberInnerHits[4];   //[_nMu]
-   Bool_t          _lEleIsEB[4];   //[_nLight]
-   Bool_t          _lEleIsEE[4];   //[_nLight]
-   Double_t        _lEleSuperClusterOverP[4];   //[_nLight]
-   Double_t        _lEleEcalEnergy[4];   //[_nLight]
-   Double_t        _lElefull5x5SigmaIetaIeta[4];   //[_nLight]
-   Double_t        _lEleDEtaInSeed[4];   //[_nLight]
-   Double_t        _lEleDeltaPhiSuperClusterTrackAtVtx[4];   //[_nLight]
-   Double_t        _lElehadronicOverEm[4];   //[_nLight]
-   Double_t        _lEleInvMinusPInv[4];   //[_nLight]
-   Double_t        _puCorr[4];   //[_nLight]
-   Double_t        _absIso03[20];   //[_nL]
-   Double_t        _absIso04[4];   //[_nMu]
-   Double_t        _sumNeutralHadronEt04[4];   //[_nMu]
-   Double_t        _sumChargedHadronPt04[4];   //[_nMu]
-   Double_t        _sumPhotonEt04[4];   //[_nMu]
-   Double_t        _sumNeutralHadronEt03[4];   //[_nLight]
-   Double_t        _sumChargedHadronPt03[4];   //[_nLight]
-   Double_t        _sumPhotonEt03[4];   //[_nLight]
-   Double_t        _trackIso[4];   //[_nLight]
-   Double_t        _ecalIso[4];   //[_nLight]
-   Double_t        _hcalIso[4];   //[_nLight]
-   Double_t        _ecalPFClusterIso[4];   //[_nLight]
-   Double_t        _hcalPFClusterIso[4];   //[_nLight]
-   Bool_t          _tauMuonVeto[20];   //[_nL]
-   Double_t        _relIso[4];   //[_nLight]
-   Double_t        _relIso0p4[4];   //[_nLight]
-   Double_t        _relIso0p4MuDeltaBeta[4];   //[_nMu]
-   Double_t        _ptRel[4];   //[_nLight]
-   Double_t        _ptRatio[4];   //[_nLight]
-   Double_t        _closestJetCsvV2[4];   //[_nLight]
-   Double_t        _closestJetDeepCsv_b[4];   //[_nLight]
-   Double_t        _closestJEC[4];   //[_nLight]
-   Double_t        _closest_lepAwareJetE[4];   //[_nLight]
-   Double_t        _closest_lepAwareJetPx[4];   //[_nLight]
-   Double_t        _closest_lepAwareJetPy[4];   //[_nLight]
-   Double_t        _closest_lepAwareJetPz[4];   //[_nLight]
-   Double_t        _closest_l1JetE[4];   //[_nLight]
-   Double_t        _closest_l1JetPx[4];   //[_nLight]
-   Double_t        _closest_l1JetPy[4];   //[_nLight]
-   Double_t        _closest_l1JetPz[4];   //[_nLight]
-   Double_t        _closest_lJetE[4];   //[_nLight]
-   Double_t        _closest_lJetPx[4];   //[_nLight]
-   Double_t        _closest_lJetPy[4];   //[_nLight]
-   Double_t        _closest_lJetPz[4];   //[_nLight]
-   Double_t        _closestJetDeepCsv_bb[4];   //[_nLight]
-   UInt_t          _selectedTrackMult[4];   //[_nLight]
-   Double_t        _lMuonSegComp[4];   //[_nMu]
-   Double_t        _lMuonTrackPt[4];   //[_nMu]
-   Double_t        _lMuonTrackPtErr[4];   //[_nMu]
+   Double_t        _vertices_os[50][12];   //[_nVFit_os]
+   Double_t        _lDisplaced_os[50][24]   //[_nVFit_os]
+   Double_t        _vertices[50][12];   //[_nVFit]
+   Double_t        _lDisplaced[50][24]   //[_nVFit]
+   UInt_t          _lHasTrigger[nL_max]   //[_nL]
+   Double_t        _lPt[nL_max]   //[_nL]
+   Double_t        _lEta[nL_max]   //[_nL]
+   Double_t        _lEtaSC[nL_max]   //[_nLight]
+   Double_t        _lPhi[nL_max]   //[_nL]
+   Double_t        _lE[nL_max]   //[_nL]
+   UInt_t          _lFlavor[nL_max]   //[_nL]
+   Int_t           _lCharge[nL_max]   //[_nL]
+   Double_t        _dxy[nL_max]   //[_nL]
+   Double_t        _dz[nL_max]   //[_nL]
+   Double_t        _3dIP[nL_max]   //[_nL]
+   Double_t        _3dIPSig[nL_max]   //[_nL]
+   Double_t        _2dIP[nL_max]   //[_nL]
+   Double_t        _2dIPSig[nL_max]   //[_nL]
+   Bool_t          _lElectronPassEmu[nL_max]   //[_nLight]
+   Bool_t          _lLooseCBwoIsolationwoMissingInnerhitswoConversionVeto[nL_max]   //[_nL]
+   Bool_t          _lElectronPassConvVeto[nL_max]   //[_nLight]
+   Bool_t          _lElectronChargeConst[nL_max]   //[_nLight]
+   UInt_t          _lElectronMissingHits[nL_max]   //[_nLight]
+   Bool_t          _lPOGVeto[nL_max]   //[_nL]
+   Bool_t          _lPOGLoose[nL_max]   //[_nL]
+   Bool_t          _lPOGMedium[nL_max]   //[_nL]
+   Bool_t          _lPOGTight[nL_max]   //[_nL]
+   Bool_t          _lGlobalMuon[nL_max]   //[_nMu]
+   Bool_t          _lTrackerMuon[nL_max]   //[_nMu]
+   Double_t        _lInnerTrackValidFraction[nL_max]   //[_nMu]
+   Double_t        _lGlobalTrackNormalizeChi2[nL_max]   //[_nMu]
+   Double_t        _lCQChi2Position[nL_max]   //[_nMu]
+   Double_t        _lCQTrackKink[nL_max]   //[_nMu]
+   UInt_t          _lNumberOfMatchedStation[nL_max]   //[_nMu]
+   UInt_t          _lNumberOfValidPixelHits[nL_max]   //[_nMu]
+   UInt_t          _lTrackerLayersWithMeasurement[nL_max]   //[_nMu]
+   Int_t           _lSimType[nL_max]   //[_nMu]
+   Int_t           _lSimExtType[nL_max]   //[_nMu]
+   Int_t           _lSimFlavour[nL_max]   //[_nMu]
+   Int_t           _muDTStationsWithValidHits[nL_max]   //[_nMu]
+   Int_t           _muCSCStationsWithValidHits[nL_max]   //[_nMu]
+   Int_t           _muRPCStationsWithValidHits[nL_max]   //[_nMu]
+   Int_t           _muMuonStationsWithValidHits[nL_max]   //[_nMu]
+   Int_t           _lMuRPCTimenDof[nL_max]   //[_nMu]
+   Int_t           _lMuTimenDof[nL_max]   //[_nMu]
+   Double_t        _lMuRPCTime[nL_max]   //[_nMu]
+   Double_t        _lMuRPCTimeErr[nL_max]   //[_nMu]
+   Double_t        _lMuTime[nL_max]   //[_nMu]
+   Double_t        _lMuTimeErr[nL_max]   //[_nMu]
+   UInt_t          _muNumberInnerHits[nL_max]   //[_nMu]
+   Bool_t          _lEleIsEB[nL_max]   //[_nLight]
+   Bool_t          _lEleIsEE[nL_max]   //[_nLight]
+   Double_t        _lEleSuperClusterOverP[nL_max]   //[_nLight]
+   Double_t        _lEleEcalEnergy[nL_max]   //[_nLight]
+   Double_t        _lElefull5x5SigmaIetaIeta[nL_max]   //[_nLight]
+   Double_t        _lEleDEtaInSeed[nL_max]   //[_nLight]
+   Double_t        _lEleDeltaPhiSuperClusterTrackAtVtx[nL_max]   //[_nLight]
+   Double_t        _lElehadronicOverEm[nL_max]   //[_nLight]
+   Double_t        _lEleInvMinusPInv[nL_max]   //[_nLight]
+   Double_t        _puCorr[nL_max]   //[_nLight]
+   Double_t        _absIso03[nL_max]   //[_nL]
+   Double_t        _absIso04[nL_max]   //[_nMu]
+   Double_t        _sumNeutralHadronEt04[nL_max]   //[_nMu]
+   Double_t        _sumChargedHadronPt04[nL_max]   //[_nMu]
+   Double_t        _sumPhotonEt04[nL_max]   //[_nMu]
+   Double_t        _sumNeutralHadronEt03[nL_max]   //[_nLight]
+   Double_t        _sumChargedHadronPt03[nL_max]   //[_nLight]
+   Double_t        _sumPhotonEt03[nL_max]   //[_nLight]
+   Double_t        _trackIso[nL_max]   //[_nLight]
+   Double_t        _ecalIso[nL_max]   //[_nLight]
+   Double_t        _hcalIso[nL_max]   //[_nLight]
+   Double_t        _ecalPFClusterIso[nL_max]   //[_nLight]
+   Double_t        _hcalPFClusterIso[nL_max]   //[_nLight]
+   Bool_t          _tauMuonVeto[nL_max]   //[_nL]
+   Bool_t          _tauEleVeto[nL_max]   //[_nL]
+   Bool_t          _decayModeFindingNew[nL_max]   //[_nL]
+   Bool_t          _tauVLooseMvaNew[nL_max]   //[_nL]
+   Bool_t          _tauLooseMvaNew[nL_max]   //[_nL]
+   Bool_t          _tauMediumMvaNew[nL_max]   //[_nL]
+   Bool_t          _tauTightMvaNew[nL_max]   //[_nL]
+   Bool_t          _tauVTightMvaNew[nL_max]   //[_nL]
+   Bool_t          _tauVTightMvaOld[nL_max]   //[_nL]
+   Double_t        _tauAgainstElectronMVA6Raw[nL_max]   //[_nL]
+   Double_t        _tauCombinedIsoDBRaw3Hits[nL_max]   //[_nL]
+   Double_t        _tauIsoMVAPWdR03oldDMwLT[nL_max]   //[_nL]
+   Double_t        _tauIsoMVADBdR03oldDMwLT[nL_max]   //[_nL]
+   Double_t        _tauIsoMVADBdR03newDMwLT[nL_max]   //[_nL]
+   Double_t        _tauIsoMVAPWnewDMwLT[nL_max]   //[_nL]
+   Double_t        _tauIsoMVAPWoldDMwLT[nL_max]   //[_nL]
+   Double_t        _relIso[nL_max]   //[_nLight]
+   Double_t        _relIso0p4[nL_max]   //[_nLight]
+   Double_t        _relIso0p4MuDeltaBeta[nL_max]   //[_nMu]
+   Double_t        _miniIso[nL_max]   //[_nLight]
+   Double_t        _miniIsoCharged[nL_max]   //[_nLight]
+   Double_t        _ptRel[nL_max]   //[_nLight]
+   Double_t        _ptRatio[nL_max]   //[_nLight]
+   Double_t        _closestJetCsvV2[nL_max]   //[_nLight]
+   Double_t        _closestJetDeepCsv_b[nL_max]   //[_nLight]
+   Double_t        _closestJEC[nL_max]   //[_nLight]
+   Double_t        _closest_lepAwareJetE[nL_max]   //[_nLight]
+   Double_t        _closest_lepAwareJetPx[nL_max]   //[_nLight]
+   Double_t        _closest_lepAwareJetPy[nL_max]   //[_nLight]
+   Double_t        _closest_lepAwareJetPz[nL_max]   //[_nLight]
+   Double_t        _closest_l1JetE[nL_max]   //[_nLight]
+   Double_t        _closest_l1JetPx[nL_max]   //[_nLight]
+   Double_t        _closest_l1JetPy[nL_max]   //[_nLight]
+   Double_t        _closest_l1JetPz[nL_max]   //[_nLight]
+   Double_t        _closest_lJetE[nL_max]   //[_nLight]
+   Double_t        _closest_lJetPx[nL_max]   //[_nLight]
+   Double_t        _closest_lJetPy[nL_max]   //[_nLight]
+   Double_t        _closest_lJetPz[nL_max]   //[_nLight]
+   Double_t        _closestJetDeepCsv_bb[nL_max]   //[_nLight]
+   UInt_t          _selectedTrackMult[nL_max]   //[_nLight]
+   Double_t        _lMuonSegComp[nL_max]   //[_nMu]
+   Double_t        _lMuonTrackPt[nL_max]   //[_nMu]
+   Double_t        _lMuonTrackPtErr[nL_max]   //[_nMu]
+   UInt_t          _lGenIndex[nL_max]   //[_nL]
+   UInt_t          _lMatchType[nL_max]   //[_nL]
+   Bool_t          _lIsPrompt[nL_max]   //[_nL]
+   Bool_t          _lIsPromptFinalState[nL_max]   //[_nL]
+   Bool_t          _lIsPromptDecayed[nL_max]   //[_nL]
+   Int_t           _lMatchPdgId[nL_max]   //[_nL]
+   Int_t           _lMomPdgId[nL_max]   //[_nL]
+   UInt_t          _lProvenance[nL_max]   //[_nL]
+   UInt_t          _lProvenanceCompressed[nL_max]   //[_nL]
+   UInt_t          _lProvenanceConversion[nL_max]   //[_nL]
+   Double_t        _lMatchPt[nL_max]   //[_nL]
+   Double_t        _lMatchEta[nL_max]   //[_nL]
+   Double_t        _lMatchPhi[nL_max]   //[_nL]
+   Double_t        _lMatchVertexX[nL_max]   //[_nL]
+   Double_t        _lMatchVertexY[nL_max]   //[_nL]
+   Double_t        _lMatchVertexZ[nL_max]   //[_nL]
+   Double_t        _lPtCorr[nL_max]   //[_nLight]
+   Double_t        _lPtScaleUp[nL_max]   //[_nLight]
+   Double_t        _lPtScaleDown[nL_max]   //[_nLight]
+   Double_t        _lPtResUp[nL_max]   //[_nLight]
+   Double_t        _lPtResDown[nL_max]   //[_nLight]
+   Double_t        _lECorr[nL_max]   //[_nLight]
+   Double_t        _lEScaleUp[nL_max]   //[_nLight]
+   Double_t        _lEScaleDown[nL_max]   //[_nLight]
+   Double_t        _lEResUp[nL_max]   //[_nLight]
+   Double_t        _lEResDown[nL_max]   //[_nLight]
+   UInt_t          _nPh;
+   Double_t        _phPt[gen_nL_max]   //[_nPh]
+   Double_t        _phEta[gen_nL_max]   //[_nPh]
+   Double_t        _phEtaSC[gen_nL_max]   //[_nPh]
+   Double_t        _phPhi[gen_nL_max]   //[_nPh]
+   Double_t        _phE[gen_nL_max]   //[_nPh]
+   Bool_t          _phCutBasedLoose[gen_nL_max]   //[_nPh]
+   Bool_t          _phCutBasedMedium[gen_nL_max]   //[_nPh]
+   Bool_t          _phCutBasedTight[gen_nL_max]   //[_nPh]
+   Double_t        _phMva[gen_nL_max]   //[_nPh]
+   Double_t        _phRandomConeChargedIsolation[gen_nL_max]   //[_nPh]
+   Double_t        _phChargedIsolation[gen_nL_max]   //[_nPh]
+   Double_t        _phNeutralHadronIsolation[gen_nL_max]   //[_nPh]
+   Double_t        _phPhotonIsolation[gen_nL_max]   //[_nPh]
+   Double_t        _phSigmaIetaIeta[gen_nL_max]   //[_nPh]
+   Double_t        _phHadronicOverEm[gen_nL_max]   //[_nPh]
+   Bool_t          _phPassElectronVeto[gen_nL_max]   //[_nPh]
+   Bool_t          _phHasPixelSeed[gen_nL_max]   //[_nPh]
+   Bool_t          _phIsPrompt[gen_nL_max]   //[_nPh]
+   Int_t           _phTTGMatchCategory[gen_nL_max]   //[_nPh]
+   Double_t        _phTTGMatchPt[gen_nL_max]   //[_nPh]
+   Double_t        _phTTGMatchEta[gen_nL_max]   //[_nPh]
+   Int_t           _phMatchPdgId[gen_nL_max]   //[_nPh]
+   Double_t        _phPtCorr[gen_nL_max]   //[_nPh]
+   Double_t        _phPtScaleUp[gen_nL_max]   //[_nPh]
+   Double_t        _phPtScaleDown[gen_nL_max]   //[_nPh]
+   Double_t        _phPtResUp[gen_nL_max]   //[_nPh]
+   Double_t        _phPtResDown[gen_nL_max]   //[_nPh]
+   Double_t        _phECorr[gen_nL_max]   //[_nPh]
+   Double_t        _phEScaleUp[gen_nL_max]   //[_nPh]
+   Double_t        _phEScaleDown[gen_nL_max]   //[_nPh]
+   Double_t        _phEResUp[gen_nL_max]   //[_nPh]
+   Double_t        _phEResDown[gen_nL_max]   //[_nPh]
    UInt_t          _nJets;
-   Double_t        _jetPt[20];   //[_nJets]
-   Double_t        _jetPt_JECDown[20];   //[_nJets]
-   Double_t        _jetPt_JECUp[20];   //[_nJets]
-   Double_t        _jetSmearedPt[20];   //[_nJets]
-   Double_t        _jetSmearedPt_JECDown[20];   //[_nJets]
-   Double_t        _jetSmearedPt_JECUp[20];   //[_nJets]
-   Double_t        _jetSmearedPt_JERDown[20];   //[_nJets]
-   Double_t        _jetSmearedPt_JERUp[20];   //[_nJets]
-   Double_t        _jetPt_Uncorrected[20];   //[_nJets]
-   Double_t        _jetPt_L1[20];   //[_nJets]
-   Double_t        _jetPt_L2[20];   //[_nJets]
-   Double_t        _jetPt_L3[20];   //[_nJets]
-   Double_t        _jetEta[20];   //[_nJets]
-   Double_t        _jetPhi[20];   //[_nJets]
-   Double_t        _jetE[20];   //[_nJets]
-   Double_t        _jetCsvV2[20];   //[_nJets]
-   Double_t        _jetDeepCsv_udsg[20];   //[_nJets]
-   Double_t        _jetDeepCsv_b[20];   //[_nJets]
-   Double_t        _jetDeepCsv_c[20];   //[_nJets]
-   Double_t        _jetDeepCsv_bb[20];   //[_nJets]
-   UInt_t          _jetHadronFlavor[20];   //[_nJets]
-   Bool_t          _jetIsLoose[20];   //[_nJets]
-   Bool_t          _jetIsTight[20];   //[_nJets]
-   Bool_t          _jetIsTightLepVeto[20];   //[_nJets]
-   Double_t        _jetNeutralHadronFraction[20];   //[_nJets]
-   Double_t        _jetChargedHadronFraction[20];   //[_nJets]
-   Double_t        _jetNeutralEmFraction[20];   //[_nJets]
-   Double_t        _jetChargedEmFraction[20];   //[_nJets]
-   Double_t        _jetHFHadronFraction[20];   //[_nJets]
-   Double_t        _jetHFEmFraction[20];   //[_nJets]
+   Double_t        _jetPt[nJets_max]   //[_nJets]
+   Double_t        _jetPt_JECDown[nJets_max]   //[_nJets]
+   Double_t        _jetPt_JECUp[nJets_max]   //[_nJets]
+   Double_t        _jetSmearedPt[nJets_max]   //[_nJets]
+   Double_t        _jetSmearedPt_JECDown[nJets_max]   //[_nJets]
+   Double_t        _jetSmearedPt_JECUp[nJets_max]   //[_nJets]
+   Double_t        _jetSmearedPt_JERDown[nJets_max]   //[_nJets]
+   Double_t        _jetSmearedPt_JERUp[nJets_max]   //[_nJets]
+   Double_t        _jetPt_Uncorrected[nJets_max]   //[_nJets]
+   Double_t        _jetPt_L1[nJets_max]   //[_nJets]
+   Double_t        _jetPt_L2[nJets_max]   //[_nJets]
+   Double_t        _jetPt_L3[nJets_max]   //[_nJets]
+   Double_t        _jetEta[nJets_max]   //[_nJets]
+   Double_t        _jetPhi[nJets_max]   //[_nJets]
+   Double_t        _jetE[nJets_max]   //[_nJets]
+   Double_t        _jetCsvV2[nJets_max]   //[_nJets]
+   Double_t        _jetDeepCsv_udsg[nJets_max]   //[_nJets]
+   Double_t        _jetDeepCsv_b[nJets_max]   //[_nJets]
+   Double_t        _jetDeepCsv_c[nJets_max]   //[_nJets]
+   Double_t        _jetDeepCsv_bb[nJets_max]   //[_nJets]
+   UInt_t          _jetHadronFlavor[nJets_max]   //[_nJets]
+   Bool_t          _jetIsLoose[nJets_max]   //[_nJets]
+   Bool_t          _jetIsTight[nJets_max]   //[_nJets]
+   Bool_t          _jetIsTightLepVeto[nJets_max]   //[_nJets]
+   Double_t        _jetNeutralHadronFraction[nJets_max]   //[_nJets]
+   Double_t        _jetChargedHadronFraction[nJets_max]   //[_nJets]
+   Double_t        _jetNeutralEmFraction[nJets_max]   //[_nJets]
+   Double_t        _jetChargedEmFraction[nJets_max]   //[_nJets]
+   Double_t        _jetHFHadronFraction[nJets_max]   //[_nJets]
+   Double_t        _jetHFEmFraction[nJets_max]   //[_nJets]
    Double_t        _met;
    Double_t        _metRaw;
    Double_t        _metJECDown;
@@ -204,6 +319,7 @@ class treeReader {
    Double_t        _metPhiUnclDown;
    Double_t        _metPhiUnclUp;
    Double_t        _metSignificance;
+
 
 
         //Constructor
@@ -406,10 +522,48 @@ class treeReader {
         void readSamples(const std::string&, const std::string&, std::vector<Sample>&);
 
         //list of branches
-        TBranch        *b__runNb;   //!
+   TBranch        *b__runNb;   //!
    TBranch        *b__lumiBlock;   //!
    TBranch        *b__eventNb;   //!
    TBranch        *b__nVertex;   //!
+   TBranch        *b__nTrueInt;   //!
+   TBranch        *b__weight;   //!
+   TBranch        *b__lheHTIncoming;   //!
+   TBranch        *b__ctauHN;   //!
+   TBranch        *b__nLheTau;   //!
+   TBranch        *b__nLheWeights;   //!
+   TBranch        *b__lheWeight;   //!
+   TBranch        *b__nPsWeights;   //!
+   TBranch        *b__psWeight;   //!
+   TBranch        *b__ttgEventType;   //!
+   TBranch        *b__zgEventType;   //!
+   TBranch        *b__gen_met;   //!
+   TBranch        *b__gen_metPhi;   //!
+   TBranch        *b__gen_nPh;   //!
+   TBranch        *b__gen_phStatus;   //!
+   TBranch        *b__gen_phPt;   //!
+   TBranch        *b__gen_phEta;   //!
+   TBranch        *b__gen_phPhi;   //!
+   TBranch        *b__gen_phE;   //!
+   TBranch        *b__gen_phMomPdg;   //!
+   TBranch        *b__gen_phIsPrompt;   //!
+   TBranch        *b__gen_phMinDeltaR;   //!
+   TBranch        *b__gen_phPassParentage;   //!
+   TBranch        *b__gen_nL;   //!
+   TBranch        *b__gen_pdgID;   //!
+   TBranch        *b__gen_lPt;   //!
+   TBranch        *b__gen_lEta;   //!
+   TBranch        *b__gen_lPhi;   //!
+   TBranch        *b__gen_lE;   //!
+   TBranch        *b__gen_lFlavor;   //!
+   TBranch        *b__gen_lCharge;   //!
+   TBranch        *b__gen_lMomPdg;   //!
+   TBranch        *b__gen_vertex_x;   //!
+   TBranch        *b__gen_vertex_y;   //!
+   TBranch        *b__gen_vertex_z;   //!
+   TBranch        *b__gen_lIsPrompt;   //!
+   TBranch        *b__gen_lMinDeltaR;   //!
+   TBranch        *b__gen_lPassParentage;   //!
    TBranch        *b__passMETFilters;   //!
    TBranch        *b__Flag_goodVertices;   //!
    TBranch        *b__Flag_HBHENoiseFilter;   //!
@@ -417,15 +571,16 @@ class treeReader {
    TBranch        *b__Flag_EcalDeadCellTriggerPrimitiveFilter;   //!
    TBranch        *b__Flag_BadPFMuonFilter;   //!
    TBranch        *b__Flag_BadChargedCandidateFilter;   //!
-   TBranch        *b__Flag_eeBadScFilter;   //!
    TBranch        *b__updated_ecalBadCalibFilter;   //!
    TBranch        *b__passTrigger_1l;   //!
-   TBranch        *b__HLT_IsoMu24;   //!
-   TBranch        *b__HLT_IsoMu24_prescale;   //!
    TBranch        *b__HLT_IsoMu27;   //!
    TBranch        *b__HLT_IsoMu27_prescale;   //!
+   TBranch        *b__HLT_IsoMu24;   //!
+   TBranch        *b__HLT_IsoMu24_prescale;   //!
    TBranch        *b__HLT_Ele32_WPTight_Gsf;   //!
    TBranch        *b__HLT_Ele32_WPTight_Gsf_prescale;   //!
+   TBranch        *b__HLT_Ele35_WPTight_Gsf;   //!
+   TBranch        *b__HLT_Ele35_WPTight_Gsf_prescale;   //!
    TBranch        *b__nL;   //!
    TBranch        *b__nMu;   //!
    TBranch        *b__nEle;   //!
@@ -518,9 +673,27 @@ class treeReader {
    TBranch        *b__hcalIso;   //!
    TBranch        *b__ecalPFClusterIso;   //!
    TBranch        *b__hcalPFClusterIso;   //!
+   TBranch        *b__tauMuonVeto;   //!
+   TBranch        *b__tauEleVeto;   //!
+   TBranch        *b__decayModeFindingNew;   //!
+   TBranch        *b__tauVLooseMvaNew;   //!
+   TBranch        *b__tauLooseMvaNew;   //!
+   TBranch        *b__tauMediumMvaNew;   //!
+   TBranch        *b__tauTightMvaNew;   //!
+   TBranch        *b__tauVTightMvaNew;   //!
+   TBranch        *b__tauVTightMvaOld;   //!
+   TBranch        *b__tauAgainstElectronMVA6Raw;   //!
+   TBranch        *b__tauCombinedIsoDBRaw3Hits;   //!
+   TBranch        *b__tauIsoMVAPWdR03oldDMwLT;   //!
+   TBranch        *b__tauIsoMVADBdR03oldDMwLT;   //!
+   TBranch        *b__tauIsoMVADBdR03newDMwLT;   //!
+   TBranch        *b__tauIsoMVAPWnewDMwLT;   //!
+   TBranch        *b__tauIsoMVAPWoldDMwLT;   //!
    TBranch        *b__relIso;   //!
    TBranch        *b__relIso0p4;   //!
    TBranch        *b__relIso0p4MuDeltaBeta;   //!
+   TBranch        *b__miniIso;   //!
+   TBranch        *b__miniIsoCharged;   //!
    TBranch        *b__ptRel;   //!
    TBranch        *b__ptRatio;   //!
    TBranch        *b__closestJetCsvV2;   //!
@@ -543,6 +716,65 @@ class treeReader {
    TBranch        *b__lMuonSegComp;   //!
    TBranch        *b__lMuonTrackPt;   //!
    TBranch        *b__lMuonTrackPtErr;   //!
+   TBranch        *b__lGenIndex;   //!
+   TBranch        *b__lMatchType;   //!
+   TBranch        *b__lIsPrompt;   //!
+   TBranch        *b__lIsPromptFinalState;   //!
+   TBranch        *b__lIsPromptDecayed;   //!
+   TBranch        *b__lMatchPdgId;   //!
+   TBranch        *b__lMomPdgId;   //!
+   TBranch        *b__lProvenance;   //!
+   TBranch        *b__lProvenanceCompressed;   //!
+   TBranch        *b__lProvenanceConversion;   //!
+   TBranch        *b__lMatchPt;   //!
+   TBranch        *b__lMatchEta;   //!
+   TBranch        *b__lMatchPhi;   //!
+   TBranch        *b__lMatchVertexX;   //!
+   TBranch        *b__lMatchVertexY;   //!
+   TBranch        *b__lMatchVertexZ;   //!
+   TBranch        *b__lPtCorr;   //!
+   TBranch        *b__lPtScaleUp;   //!
+   TBranch        *b__lPtScaleDown;   //!
+   TBranch        *b__lPtResUp;   //!
+   TBranch        *b__lPtResDown;   //!
+   TBranch        *b__lECorr;   //!
+   TBranch        *b__lEScaleUp;   //!
+   TBranch        *b__lEScaleDown;   //!
+   TBranch        *b__lEResUp;   //!
+   TBranch        *b__lEResDown;   //!
+   TBranch        *b__nPh;   //!
+   TBranch        *b__phPt;   //!
+   TBranch        *b__phEta;   //!
+   TBranch        *b__phEtaSC;   //!
+   TBranch        *b__phPhi;   //!
+   TBranch        *b__phE;   //!
+   TBranch        *b__phCutBasedLoose;   //!
+   TBranch        *b__phCutBasedMedium;   //!
+   TBranch        *b__phCutBasedTight;   //!
+   TBranch        *b__phMva;   //!
+   TBranch        *b__phRandomConeChargedIsolation;   //!
+   TBranch        *b__phChargedIsolation;   //!
+   TBranch        *b__phNeutralHadronIsolation;   //!
+   TBranch        *b__phPhotonIsolation;   //!
+   TBranch        *b__phSigmaIetaIeta;   //!
+   TBranch        *b__phHadronicOverEm;   //!
+   TBranch        *b__phPassElectronVeto;   //!
+   TBranch        *b__phHasPixelSeed;   //!
+   TBranch        *b__phIsPrompt;   //!
+   TBranch        *b__phTTGMatchCategory;   //!
+   TBranch        *b__phTTGMatchPt;   //!
+   TBranch        *b__phTTGMatchEta;   //!
+   TBranch        *b__phMatchPdgId;   //!
+   TBranch        *b__phPtCorr;   //!
+   TBranch        *b__phPtScaleUp;   //!
+   TBranch        *b__phPtScaleDown;   //!
+   TBranch        *b__phPtResUp;   //!
+   TBranch        *b__phPtResDown;   //!
+   TBranch        *b__phECorr;   //!
+   TBranch        *b__phEScaleUp;   //!
+   TBranch        *b__phEScaleDown;   //!
+   TBranch        *b__phEResUp;   //!
+   TBranch        *b__phEResDown;   //!
    TBranch        *b__nJets;   //!
    TBranch        *b__jetPt;   //!
    TBranch        *b__jetPt_JECDown;   //!
@@ -586,6 +818,6 @@ class treeReader {
    TBranch        *b__metPhiJECUp;   //!
    TBranch        *b__metPhiUnclDown;   //!
    TBranch        *b__metPhiUnclUp;   //!
-   TBranch        *b__metSignificance;   //!
+   TBranch        *b__metSignificance;   //
 };
 #endif
