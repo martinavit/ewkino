@@ -572,6 +572,8 @@ Double_t        _metSignificance;
    TBranch        *b__Flag_BadChargedCandidateFilter;   //!
    TBranch        *b__updated_ecalBadCalibFilter;   //!
    TBranch        *b__passTrigger_1l;   //!
+   TBranch        *b__HLT_Ele27_WPTight_Gsf;   //!
+   TBranch        *b__HLT_Ele27_WPTight_Gsf_prescale;   //!
    TBranch        *b__HLT_IsoMu27;   //!
    TBranch        *b__HLT_IsoMu27_prescale;   //!
    TBranch        *b__HLT_IsoMu24;   //!
