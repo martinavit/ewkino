@@ -54,7 +54,7 @@ void treeReader::printLeptonContent( std::ostream& os ) const{
         os << "charge = " << _lCharge[l];
 
         //leptin ID decisions
-        if( lepIsLoose(l) ){
+        /*if( lepIsLoose(l) ){
             os << "\tloose\t";
         } else {
             os << "\tfail_loose\t";
@@ -70,7 +70,7 @@ void treeReader::printLeptonContent( std::ostream& os ) const{
             os << "tight\t";
         } else {
             os << "fail_tight\t";
-        }
+        }*/
 
         //os << "leptonMVA16 = " << _leptonMvatZqTTV16[l];
         //os << "\tleptonMVA17 = " << _leptonMvatZqTTV17[l];
@@ -86,11 +86,11 @@ void treeReader::printLeptonContent( std::ostream& os ) const{
             << "\tsip3d = " << _3dIPSig[l]
             << "\tdxy = " << _dxy[l]
             << "\tdz = " << _dz[l];*/
-        if( _lFlavor[l] == 0 ){
+        /*if( _lFlavor[l] == 0 ){
             os << "\telectronMvaSpring16GP = " << _lElectronMva[l] << "\telectronMvaFall17NoIso = " << _lElectronMvaFall17NoIso[l];
         } else {
             os << "\tsegmentCompatibility = " << _lMuonSegComp[l];
-        }
+        }*/
         os << "\n";
     }
     os << std::flush; 
