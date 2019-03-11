@@ -326,10 +326,10 @@ Double_t        _metSignificance;
 
         //set up tree for reading and writing
         void initTree(TTree *tree, const bool isData = false, const bool Is2016 = false);
-        void setOutputTree(TTree*, const bool isData = false);
+        void setOutputTree(TTree*, const bool isData = false, const bool Is2016 = false);
 
         //skim tree
-        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false);
+        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false, const bool Isdata = false);
         void combinePD(std::vector<std::string>& datasets, const bool is2017, std::string outputDirectory = "");
 
         //set up tree for analysis
