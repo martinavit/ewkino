@@ -325,7 +325,7 @@ Double_t        _metSignificance;
         treeReader(TTree *tree = nullptr);
 
         //set up tree for reading and writing
-        void initTree(TTree *tree, const bool isData = false);
+        void initTree(TTree *tree, const bool isData = false, const bool Is2016 = false);
         void setOutputTree(TTree*, const bool isData = false);
 
         //skim tree
