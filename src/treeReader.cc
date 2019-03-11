@@ -128,10 +128,11 @@ void treeReader::initTree(TTree *tree, const bool isData)
    fChain->SetBranchAddress("_passTrigger_1l", &_passTrigger_1l, &b__passTrigger_1l);
    if (!is2016())fChain->SetBranchAddress("_HLT_IsoMu27", &_HLT_IsoMu27, &b__HLT_IsoMu27);
    if (!is2016())fChain->SetBranchAddress("_HLT_IsoMu27_prescale", &_HLT_IsoMu27_prescale, &b__HLT_IsoMu27_prescale);
+   if (is2016()) fChain->SetBranchAddress("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, &_HLT_Ele27_WPTight_Gsf); 
    fChain->SetBranchAddress("_HLT_IsoMu24", &_HLT_IsoMu24, &b__HLT_IsoMu24);
    fChain->SetBranchAddress("_HLT_IsoMu24_prescale", &_HLT_IsoMu24_prescale, &b__HLT_IsoMu24_prescale);
-   fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, &b__HLT_Ele32_WPTight_Gsf);
-   fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf_prescale", &_HLT_Ele32_WPTight_Gsf_prescale, &b__HLT_Ele32_WPTight_Gsf_prescale);
+   if (!is2016())fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, &b__HLT_Ele32_WPTight_Gsf);
+   if (!is2016())fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf_prescale", &_HLT_Ele32_WPTight_Gsf_prescale, &b__HLT_Ele32_WPTight_Gsf_prescale);
    if (!is2016())fChain->SetBranchAddress("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, &b__HLT_Ele35_WPTight_Gsf);
    if (!is2016())fChain->SetBranchAddress("_HLT_Ele35_WPTight_Gsf_prescale", &_HLT_Ele35_WPTight_Gsf_prescale, &b__HLT_Ele35_WPTight_Gsf_prescale);
    fChain->SetBranchAddress("_nL", &_nL, &b__nL);
@@ -368,8 +369,9 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData){
     outputTree->Branch("_metSignificance",              &_metSignificance,              "_metSignificance/D");
     outputTree->Branch("_passTrigger_1l", &_passTrigger_1l, "_passTrigger_1l/O");
     if (!is2016())outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
+    if (is2016()) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");
     outputTree->Branch("_HLT_IsoMu24", &_HLT_IsoMu24, "_HLT_IsoMu24/O");
-    outputTree->Branch("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, "_HLT_Ele32_WPTight_Gsf/O");
+    if (!is2016())outputTree->Branch("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, "_HLT_Ele32_WPTight_Gsf/O");
     if (!is2016())outputTree->Branch("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, "_HLT_Ele35_WPTight_Gsf/O");
     outputTree->Branch("_passMETFilters", &_passMETFilters, "_passMETFilters/O");
     //TEMPORARY FOR CHECK, CAN BE REMOVED LATER
