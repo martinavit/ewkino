@@ -57,7 +57,7 @@ void treeReader::skimTree(const std::string& fileName, std::string outputDirecto
     outputFile->mkdir("blackJackAndHookers");
     outputFile->cd("blackJackAndHookers"); 
     TTree* outputTree = new TTree("blackJackAndHookersTree","blackJackAndHookersTree");
-    setOutputTree(outputTree, isData);
+    setOutputTree(outputTree, isData, Is2016);
 
     //TEMPORARY MVA READER: REMOVE THIS LATER
    
