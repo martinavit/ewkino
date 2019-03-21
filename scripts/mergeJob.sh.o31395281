@@ -1,0 +1,3 @@
+hadd Target file: /user/mvit/Work/ntuples_unskimmed/SingleMuon_Summer16.root
+hadd compression setting for all ouput: 1
+hadd Source file 1: /user/mvit/Work/ntuples_temp_SingleMuon_Summer16/SingleMuoncrab_Run2016C-17Jul2018-v1_2016_legacy9March190309_0009470000trilep_173_dilepSkim.root
