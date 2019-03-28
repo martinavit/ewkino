@@ -709,7 +709,7 @@ Double_t        _metSignificance;
    TBranch        *b__closest_lJetPz;   //!
    TBranch        *b__closestJetDeepCsv_bb;   //!
     
-   TBranch        *b__lElectronMvaSummer16GP[;                                                           // OLD
+   TBranch        *b__lElectronMvaSummer16GP;                                                           // OLD
    TBranch        *b__lElectronMvaSummer16HZZ;                                                          // OLD
    TBranch        *b__lElectronMvaFall17v1NoIso;                                                        // OLD
    TBranch        *b__lElectronMvaFall17Iso;
