@@ -570,15 +570,12 @@ Double_t        _metSignificance;
    TBranch        *b__updated_ecalBadCalibFilter;   //!
    TBranch        *b__passTrigger_1l;   //!
    TBranch        *b__HLT_Ele27_WPTight_Gsf;   //!
-   TBranch        *b__HLT_Ele27_WPTight_Gsf_prescale;   //!
    TBranch        *b__HLT_IsoMu27;   //!
-   TBranch        *b__HLT_IsoMu27_prescale;   //!
    TBranch        *b__HLT_IsoMu24;   //!
-   TBranch        *b__HLT_IsoMu24_prescale;   //!
+   TBranch        *b_HLT_IsoTkMu24;   //!
    TBranch        *b__HLT_Ele32_WPTight_Gsf;   //!
-   TBranch        *b__HLT_Ele32_WPTight_Gsf_prescale;   //!
+   TBranch        *b_HLT_Ele32_WPTight_Gsf_L1DoubleEG;   //!
    TBranch        *b__HLT_Ele35_WPTight_Gsf;   //!
-   TBranch        *b__HLT_Ele35_WPTight_Gsf_prescale;   //!
    TBranch        *b__nL;   //!
    TBranch        *b__nMu;   //!
    TBranch        *b__nEle;   //!
