@@ -25,7 +25,7 @@ class treeReader {
    ULong64_t       _runNb;
 ULong64_t       _lumiBlock;
 ULong64_t       _eventNb;
-UInt_t         _nVertex;
+UChar_t         _nVertex;
 Float_t         _nTrueInt;
 Double_t        _weight;
 Double_t        _lheHTIncoming;
