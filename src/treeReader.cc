@@ -370,7 +370,7 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
     outputTree->Branch("_metSignificance",              &_metSignificance,              "_metSignificance/D");
     outputTree->Branch("_passTrigger_1l", &_passTrigger_1l, "_passTrigger_1l/O");
     outputTree->Branch("_HLT_IsoMu24", &_HLT_IsoMu24, "_HLT_IsoMu24/O");
-    if (Is2016) utputTree->Branch("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, "_HLT_IsoTkMu24/O");
+    if (Is2016) outputTree->Branch("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, "_HLT_IsoTkMu24/O");
     if (Is2016) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");
         
     if (!Is2016)outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
