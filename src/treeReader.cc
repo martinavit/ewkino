@@ -519,7 +519,8 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
     outputTree->Branch("_jetHFEmFraction",           &_jetHFEmFraction,          "_jetHFEmFraction[_nJets]/D");
 
     if(!isData){
-        outputTree->Branch("_nLheWeights",               &_nLheWeights,               "_nLheWeights/b");
+        outputTree->Branch("_nTrueInt",                  &_nTrueInt,                  "_nTrueInt/F");
+        outputTree->Branch("_nLheWeights",               &_nLheWeights,               "_nLheWeights/i");
         outputTree->Branch("_lheWeight",                 &_lheWeight,                 "_lheWeight[_nLheWeights]/D");
         outputTree->Branch("_weight",                    &_weight,                    "_weight/D");
         outputTree->Branch("_gen_metPhi",                &_gen_metPhi,                "_gen_metPhi/D");
