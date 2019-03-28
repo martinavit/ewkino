@@ -207,6 +207,11 @@ Double_t        _closest_lJetPx[nL_max];  //[_nLight]
 Double_t        _closest_lJetPy[nL_max];  //[_nLight]
 Double_t        _closest_lJetPz[nL_max];  //[_nLight]
 Double_t        _closestJetDeepCsv_bb[nL_max];  //[_nLight]
+Float_t         _lElectronMvaSummer16GP[nL_max];                                                           // OLD
+Float_t         _lElectronMvaSummer16HZZ[nL_max];                                                          // OLD
+Float_t         _lElectronMvaFall17v1NoIso[nL_max];                                                        // OLD
+Float_t         _lElectronMvaFall17Iso[nL_max];
+Float_t         _lElectronMvaFall17NoIso[nL_max];        
 UInt_t          _selectedTrackMult[nL_max];  //[_nLight]
 Double_t        _lMuonSegComp[nL_max];  //[_nMu]
 Double_t        _lMuonTrackPt[nL_max];  //[_nMu]
@@ -703,6 +708,13 @@ Double_t        _metSignificance;
    TBranch        *b__closest_lJetPy;   //!
    TBranch        *b__closest_lJetPz;   //!
    TBranch        *b__closestJetDeepCsv_bb;   //!
+    
+   TBranch        *b__lElectronMvaSummer16GP[;                                                           // OLD
+   TBranch        *b__lElectronMvaSummer16HZZ;                                                          // OLD
+   TBranch        *b__lElectronMvaFall17v1NoIso;                                                        // OLD
+   TBranch        *b__lElectronMvaFall17Iso;
+   TBranch        *b__lElectronMvaFall17NoIso;
+                                             
    TBranch        *b__selectedTrackMult;   //!
    TBranch        *b__lMuonSegComp;   //!
    TBranch        *b__lMuonTrackPt;   //!
