@@ -368,11 +368,15 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
     outputTree->Branch("_metPhiUnclUp",                 &_metPhiUnclUp,                 "_metPhiUnclUp/D");
     outputTree->Branch("_metSignificance",              &_metSignificance,              "_metSignificance/D");
     outputTree->Branch("_passTrigger_1l", &_passTrigger_1l, "_passTrigger_1l/O");
-    if (!Is2016)outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
-    if (Is2016) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");
     outputTree->Branch("_HLT_IsoMu24", &_HLT_IsoMu24, "_HLT_IsoMu24/O");
+    if (Is2016) utputTree->Branch("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, "_HLT_IsoTkMu24/O");
+    if (Is2016) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");
+        
+    if (!Is2016)outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
     if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, "_HLT_Ele32_WPTight_Gsf/O");
     if (!Is2016)outputTree->Branch("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, "_HLT_Ele35_WPTight_Gsf/O");
+    if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf_L1DoubleEG", &_HLT_Ele32_WPTight_Gsf_L1DoubleEG, "_HLT_Ele32_WPTight_Gsf_L1DoubleEG/O");
+
     outputTree->Branch("_passMETFilters", &_passMETFilters, "_passMETFilters/O");
     //TEMPORARY FOR CHECK, CAN BE REMOVED LATER
     outputTree->Branch("_Flag_BadPFMuonFilter", &_Flag_BadPFMuonFilter, "_Flag_BadPFMuonFilter/O");
