@@ -39,7 +39,7 @@ void treeReader::skimTree(const std::string& fileName, std::string outputDirecto
     nVertices = (TH1D*) sampleFile->Get("blackJackAndHookers/nVertices");
     //Get Tree
     TTree* sampleTree = (TTree*) (sampleFile->Get("blackJackAndHookers/blackJackAndHookersTree"));
-    initTree(sampleTree, isData, Is2016);
+    initTree(sampleTree, isData, Is2016, IsFR);
     outputDirectory = (outputDirectory == "") ? "~/Work/ntuples_temp/" : outputDirectory;
     std::string outputFileName = fileName;
     /*
@@ -57,7 +57,7 @@ void treeReader::skimTree(const std::string& fileName, std::string outputDirecto
     outputFile->mkdir("blackJackAndHookers");
     outputFile->cd("blackJackAndHookers"); 
     TTree* outputTree = new TTree("blackJackAndHookersTree","blackJackAndHookersTree");
-    setOutputTree(outputTree, isData, Is2016);
+    setOutputTree(outputTree, isData, Is2016, IsFR);
 
     //TEMPORARY MVA READER: REMOVE THIS LATER
    
