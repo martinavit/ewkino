@@ -22,7 +22,7 @@
 //#include "TMVA/Reader.h"
 
 
-void treeReader::skimTree(const std::string& fileName, std::string outputDirectory, const bool isData,  const bool Is2016, const IsFR){//std::string outputFileName){
+void treeReader::skimTree(const std::string& fileName, std::string outputDirectory, const bool isData,  const bool Is2016, const bool IsFR){//std::string outputFileName){
     //Read tree	
     std::shared_ptr<TFile> sampleFile = std::make_shared<TFile>( (const TString& ) fileName,"read");	
     sampleFile->cd("blackJackAndHookers");
