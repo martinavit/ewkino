@@ -18,10 +18,10 @@
 class treeReader {
     public :
         //Declare leaf types
-        static const unsigned nL_max = 20;
-        static const unsigned nJets_max = 20;
-        static const unsigned gen_nL_max = 20;
-        static const unsigned gen_nPh_max = 10;
+        static const unsigned nL_max = 100;
+        static const unsigned nJets_max = 100;
+        static const unsigned gen_nL_max = 100;
+        static const unsigned gen_nPh_max = 100;
    ULong64_t       _runNb;
 ULong64_t       _lumiBlock;
 ULong64_t       _eventNb;
@@ -72,6 +72,14 @@ Bool_t          _Flag_EcalDeadCellTriggerPrimitiveFilter;
 Bool_t          _Flag_BadPFMuonFilter;
 Bool_t          _Flag_BadChargedCandidateFilter;
 Bool_t          _updated_ecalBadCalibFilter;
+  
+Bool_t     _FR_single_lepton;
+Bool_t     _HLT_Mu8;
+Bool_t     _HLT_Mu17;
+Bool_t     _HLT_Mu3_PFJet40;
+Bool_t     _HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30;
+Bool_t     _HLT_Ele8_CaloIdM_TrackIdM_PFJet30;
+    
 Bool_t          _passTrigger_1l;
 Bool_t          _HLT_Ele27_WPTight_Gsf;
 Bool_t          _HLT_IsoMu27;
@@ -327,11 +335,11 @@ Double_t        _metSignificance;
         treeReader(TTree *tree = nullptr);
 
         //set up tree for reading and writing
-        void initTree(TTree *tree, const bool isData = false, const bool Is2016 = false);
-        void setOutputTree(TTree*, const bool isData = false, const bool Is2016 = false);
+        void initTree(TTree *tree, const bool isData = false, const bool Is2016 = false, const bool IsFR = false);
+        void setOutputTree(TTree*, const bool isData = false, const bool Is2016 = false, const bool IsFR = false);
 
         //skim tree
-        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false, const bool Isdata = false);
+        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false, const bool Isdata = false, const bool IsFR);
         void combinePD(std::vector<std::string>& datasets, const bool is2017, std::string outputDirectory = "");
 
         //set up tree for analysis
@@ -573,6 +581,15 @@ Double_t        _metSignificance;
    TBranch        *b__Flag_BadPFMuonFilter;   //!
    TBranch        *b__Flag_BadChargedCandidateFilter;   //!
    TBranch        *b__updated_ecalBadCalibFilter;   //!
+    
+    TBranch     *b__FR_single_lepton;
+    TBranch     *b__HLT_Mu8;
+    TBranch     *b__HLT_Mu17;
+    TBranch     *b__HLT_Mu3_PFJet40;
+    TBranch     *b__HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30;
+    TBranch     *b__HLT_Ele8_CaloIdM_TrackIdM_PFJet30;
+    
+    
    TBranch        *b__passTrigger_1l;   //!
    TBranch        *b__HLT_Ele27_WPTight_Gsf;   //!
    TBranch        *b__HLT_IsoMu27;   //!
