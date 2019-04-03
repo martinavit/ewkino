@@ -22,7 +22,7 @@
 //#include "TMVA/Reader.h"
 
 
-void treeReader::skimTree(const std::string& fileName, std::string outputDirectory, const bool isData,  const bool Is2016){//std::string outputFileName){
+void treeReader::skimTree(const std::string& fileName, std::string outputDirectory, const bool isData,  const bool Is2016, const IsFR){//std::string outputFileName){
     //Read tree	
     std::shared_ptr<TFile> sampleFile = std::make_shared<TFile>( (const TString& ) fileName,"read");	
     sampleFile->cd("blackJackAndHookers");
@@ -97,8 +97,9 @@ int main(int argc, char* argv[]){
     treeReader reader;
     bool isData = false;
     bool Is2016 = false;
+    bool IsFR = false;
     if(argc != 0){
-        std::vector<std::string> datasets = {"SingleElectron", "SingleMuon", "DoubleEG", "DoubleMuon", "MuonEG"}; 
+        std::vector<std::string> datasets = {"SingleElectron", "SingleMuon", "DoubleEG", "DoubleMuon", "MuonEG", "EGamma"}; 
         for(auto it = datasets.cbegin(); it != datasets.cend(); ++it){
             std::string name(argv[1]);
             auto pos = name.find(*it);
@@ -107,11 +108,11 @@ int main(int argc, char* argv[]){
     }
     switch(argc){
         case 2:{
-                   reader.skimTree(argv[1], "", isData, Is2016);
+                   reader.skimTree(argv[1], "", isData, Is2016,IsFR);
                    return 0;
                }
         case 3:{
-                   reader.skimTree(argv[1], argv[2], isData, Is2016);
+                   reader.skimTree(argv[1], argv[2], isData, Is2016,IsFR);
                    return 0;
                }
         default:{
