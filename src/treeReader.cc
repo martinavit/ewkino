@@ -125,17 +125,25 @@ void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016, con
    fChain->SetBranchAddress("_Flag_BadPFMuonFilter", &_Flag_BadPFMuonFilter, &b__Flag_BadPFMuonFilter);
    fChain->SetBranchAddress("_Flag_BadChargedCandidateFilter", &_Flag_BadChargedCandidateFilter, &b__Flag_BadChargedCandidateFilter);
    fChain->SetBranchAddress("_updated_ecalBadCalibFilter", &_updated_ecalBadCalibFilter, &b__updated_ecalBadCalibFilter);
-   fChain->SetBranchAddress("_passTrigger_1l", &_passTrigger_1l, &b__passTrigger_1l);
+   if (!IsFR){
+        fChain->SetBranchAddress("_passTrigger_1l", &_passTrigger_1l, &b__passTrigger_1l);   
+        fChain->SetBranchAddress("_HLT_IsoMu24", &_HLT_IsoMu24, &b__HLT_IsoMu24);
+        if (Is2016) fChain->SetBranchAddress("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, &b__HLT_IsoTkMu24);
+        if (Is2016) fChain->SetBranchAddress("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, &b__HLT_Ele27_WPTight_Gsf);   
+        if (!Is2016)fChain->SetBranchAddress("_HLT_IsoMu27", &_HLT_IsoMu27, &b__HLT_IsoMu27);  
+        if (!Is2016)fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, &b__HLT_Ele32_WPTight_Gsf);
+        if (!Is2016)fChain->SetBranchAddress("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, &b__HLT_Ele35_WPTight_Gsf);
+        if (!Is2016)fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf_L1DoubleEG", &_HLT_Ele32_WPTight_Gsf_L1DoubleEG, &b__HLT_Ele32_WPTight_Gsf_L1DoubleEG);
+   }
+   if (IsFR){
+        fChain->SetBranchAddress("_FR_single_lepton", &_FR_single_lepton, &b__FR_single_lepton);   
+        fChain->SetBranchAddress("_HLT_Mu8", &_HLT_Mu8, &b__HLT_Mu8);   
+        fChain->SetBranchAddress("_HLT_Mu17", &_HLT_Mu17, &b__HLT_Mu17);   
+        fChain->SetBranchAddress("_HLT_Mu3_PFJet40", &_HLT_Mu3_PFJet40, &b__HLT_Mu3_PFJet40);   
+        fChain->SetBranchAddress("_HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30", &_HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30, &b__HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30);   
+        fChain->SetBranchAddress("_HLT_Ele8_CaloIdM_TrackIdM_PFJet30", &_HLT_Ele8_CaloIdM_TrackIdM_PFJet30, &b__HLT_Ele8_CaloIdM_TrackIdM_PFJet30);   
+   }
     
-   fChain->SetBranchAddress("_HLT_IsoMu24", &_HLT_IsoMu24, &b__HLT_IsoMu24);
-   if (Is2016) fChain->SetBranchAddress("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, &b__HLT_IsoTkMu24);
-   if (Is2016) fChain->SetBranchAddress("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, &b__HLT_Ele27_WPTight_Gsf); 
-    
-   if (!Is2016)fChain->SetBranchAddress("_HLT_IsoMu27", &_HLT_IsoMu27, &b__HLT_IsoMu27);  
-   if (!Is2016)fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, &b__HLT_Ele32_WPTight_Gsf);
-   if (!Is2016)fChain->SetBranchAddress("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, &b__HLT_Ele35_WPTight_Gsf);
-   if (!Is2016)fChain->SetBranchAddress("_HLT_Ele32_WPTight_Gsf_L1DoubleEG", &_HLT_Ele32_WPTight_Gsf_L1DoubleEG, &b__HLT_Ele32_WPTight_Gsf_L1DoubleEG);
-
    fChain->SetBranchAddress("_nL", &_nL, &b__nL);
    fChain->SetBranchAddress("_nMu", &_nMu, &b__nMu);
    fChain->SetBranchAddress("_nEle", &_nEle, &b__nEle);
@@ -357,7 +365,7 @@ void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016, con
     }
 }
 
-void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool Is2016){
+void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool Is2016, const bool IsFR){
     outputTree->Branch("_runNb",                        &_runNb,                        "_runNb/l");
     outputTree->Branch("_lumiBlock",                    &_lumiBlock,                    "_lumiBlock/l");
     outputTree->Branch("_eventNb",                      &_eventNb,                      "_eventNb/l");
@@ -373,16 +381,26 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
     outputTree->Branch("_metPhiUnclDown",               &_metPhiUnclDown,               "_metPhiUnclDown/D");
     outputTree->Branch("_metPhiUnclUp",                 &_metPhiUnclUp,                 "_metPhiUnclUp/D");
     outputTree->Branch("_metSignificance",              &_metSignificance,              "_metSignificance/D");
-    outputTree->Branch("_passTrigger_1l", &_passTrigger_1l, "_passTrigger_1l/O");
-    outputTree->Branch("_HLT_IsoMu24", &_HLT_IsoMu24, "_HLT_IsoMu24/O");
-    if (Is2016) outputTree->Branch("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, "_HLT_IsoTkMu24/O");
-    if (Is2016) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");
-        
-    if (!Is2016)outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
-    if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, "_HLT_Ele32_WPTight_Gsf/O");
-    if (!Is2016)outputTree->Branch("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, "_HLT_Ele35_WPTight_Gsf/O");
-    if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf_L1DoubleEG", &_HLT_Ele32_WPTight_Gsf_L1DoubleEG, "_HLT_Ele32_WPTight_Gsf_L1DoubleEG/O");
-
+    
+    if (!IsFR){
+            outputTree->Branch("_passTrigger_1l", &_passTrigger_1l, "_passTrigger_1l/O");
+            outputTree->Branch("_HLT_IsoMu24", &_HLT_IsoMu24, "_HLT_IsoMu24/O");
+            if (Is2016) outputTree->Branch("_HLT_IsoTkMu24", &_HLT_IsoTkMu24, "_HLT_IsoTkMu24/O");
+            if (Is2016) outputTree->Branch("_HLT_Ele27_WPTight_Gsf", &_HLT_Ele27_WPTight_Gsf, "_HLT_Ele27_WPTight_Gsf/O");  
+            if (!Is2016)outputTree->Branch("_HLT_IsoMu27", &_HLT_IsoMu27, "_HLT_IsoMu27/O");
+            if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf", &_HLT_Ele32_WPTight_Gsf, "_HLT_Ele32_WPTight_Gsf/O");
+            if (!Is2016)outputTree->Branch("_HLT_Ele35_WPTight_Gsf", &_HLT_Ele35_WPTight_Gsf, "_HLT_Ele35_WPTight_Gsf/O");
+            if (!Is2016)outputTree->Branch("_HLT_Ele32_WPTight_Gsf_L1DoubleEG", &_HLT_Ele32_WPTight_Gsf_L1DoubleEG, "_HLT_Ele32_WPTight_Gsf_L1DoubleEG/O");
+    }
+    
+    if (IsFR){
+            outputTree->Branch("_FR_single_lepton", &_FR_single_lepton, "_FR_single_lepton/O");
+            outputTree->Branch("_HLT_Mu8", &_HLT_Mu8, "_HLT_Mu8/O");
+            outputTree->Branch("_HLT_Mu17", &_HLT_Mu17, "_HLT_Mu17/O");
+            outputTree->Branch("_HLT_Mu3_PFJet40", &_HLT_Mu3_PFJet40, "_HLT_Mu3_PFJet40/O");
+            outputTree->Branch("_HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30", &_HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30, "_HLT_Ele12_CaloIdL_TrackIdL_IsoVL_PFJet30/O");
+            outputTree->Branch("_HLT_Ele8_CaloIdM_TrackIdM_PFJet30", &_HLT_Ele8_CaloIdM_TrackIdM_PFJet30, "_HLT_Ele8_CaloIdM_TrackIdM_PFJet30/O");
+    } 
     outputTree->Branch("_passMETFilters", &_passMETFilters, "_passMETFilters/O");
     //TEMPORARY FOR CHECK, CAN BE REMOVED LATER
     outputTree->Branch("_Flag_BadPFMuonFilter", &_Flag_BadPFMuonFilter, "_Flag_BadPFMuonFilter/O");
