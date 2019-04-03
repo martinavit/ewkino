@@ -339,7 +339,7 @@ Double_t        _metSignificance;
         void setOutputTree(TTree*, const bool isData = false, const bool Is2016 = false, const bool IsFR = false);
 
         //skim tree
-        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false, const bool Isdata = false, const bool IsFR);
+        void skimTree(const std::string&, std::string outputDirectory = "", const bool isData = false, const bool Is2016 = false, const bool IsFR = false);
         void combinePD(std::vector<std::string>& datasets, const bool is2017, std::string outputDirectory = "");
 
         //set up tree for analysis
