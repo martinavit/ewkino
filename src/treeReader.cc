@@ -104,7 +104,7 @@ void treeReader::GetEntry(long unsigned entry){    //currently initialized sampl
     GetEntry(samples[currentSampleIndex], entry);
 }
 
-void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016)
+void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016, const bool IsFR)
 {
     // Set branch addresses and branch pointers
     if (!tree) return;
