@@ -564,6 +564,7 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
         outputTree->Branch("_nLheWeights",               &_nLheWeights,               "_nLheWeights/i");
         outputTree->Branch("_lheWeight",                 &_lheWeight,                 "_lheWeight[_nLheWeights]/D");
         outputTree->Branch("_weight",                    &_weight,                    "_weight/D");
+        outputTree->Branch("_ctauHN",                    &_ctauHN,                    "_ctauHN/D");
         outputTree->Branch("_gen_metPhi",                &_gen_metPhi,                "_gen_metPhi/D");
         outputTree->Branch("_gen_nL",                    &_gen_nL,                    "_gen_nL/b");
         outputTree->Branch("_gen_lPt",                   &_gen_lPt,                   "_gen_lPt[_gen_nL]/D");
