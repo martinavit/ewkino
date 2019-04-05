@@ -550,6 +550,14 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
     outputTree->Branch("_jetChargedEmFraction",      &_jetChargedEmFraction,     "_jetChargedEmFraction[_nJets]/D");
     outputTree->Branch("_jetHFHadronFraction",       &_jetHFHadronFraction,      "_jetHFHadronFraction[_nJets]/D");
     outputTree->Branch("_jetHFEmFraction",           &_jetHFEmFraction,          "_jetHFEmFraction[_nJets]/D");
+    
+    
+  
+   outputTree->Branch("_jetSmearedPt", &_jetSmearedPt, "_jetSmearedPt[_nJets]/D");
+   outputTree->Branch("_jetSmearedPt_JECDown", &_jetSmearedPt_JECDown, "_jetSmearedPt_JECDown[_nJets]/D");
+   outputTree->Branch("_jetSmearedPt_JECUp", &_jetSmearedPt_JECUp, "_jetSmearedPt_JECUp[_nJets]/D");
+   outputTree->Branch("_jetSmearedPt_JERDown", &_jetSmearedPt_JERDown, "_jetSmearedPt_JERDown[_nJets]/D");
+   outputTree->Branch("_jetSmearedPt_JERUp", &_jetSmearedPt_JERUp, "_jetSmearedPt_JERUp[_nJets]/D");
 
     if(!isData){
         outputTree->Branch("_nTrueInt",                  &_nTrueInt,                  "_nTrueInt/F");
