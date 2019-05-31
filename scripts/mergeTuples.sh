@@ -15,7 +15,7 @@ fillJob(){
     echo "    then rm ~/Work/ntuples_unskimmed/$name" >> $2
     echo "fi" >> $2
     echo "hadd ~/Work/ntuples_unskimmed/$name ${1}/*root" >> $2
- #   echo "rm -r $1" >> $2
+    echo "rm -r $1" >> $2
 }
 
 mergeTuple(){
