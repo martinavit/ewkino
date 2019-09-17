@@ -136,7 +136,7 @@ int main(int argc, char* argv[]){
 
     //list of samples
     //std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017" );
-
+    std::cout<<"in main"<<std::endl;
     //read sample lists from txt 
     std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
    // for( auto& samp : sampleVector2017 ){
@@ -144,6 +144,7 @@ int main(int argc, char* argv[]){
    // }
 
     for(const auto& sample : sampleVector){
+        std::cout<<"in for sample"<<std::endl;
         if(sample.isData()) continue;
         std::cout << "Extracting weights for " << sample.getFileName() << std::endl;
         extractPuWeights(sample);
