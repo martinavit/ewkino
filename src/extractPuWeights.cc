@@ -58,12 +58,7 @@ void extractPuWeights(const Sample& sample){
         return;
     }
 
-    //skip 2016 samples in the 2017 sample list
-    if( sample.is2017() && sample.getFileName().find("Summer16") != std::string::npos){
-        std::cout << "Skipping 2016 sample : " << sample.getFileName() << " from 2017 list, it should also be included in the 2016 list" << std::endl;
-        return;
-    }
-
+   
     //directory where ntuples are stored 
     //const std::string directory = "~/Work/ntuples_tzq/";
 
@@ -88,15 +83,15 @@ void extractPuWeights(const Sample& sample){
 
     for(unsigned e = 0; e < allEras.size(); ++e){
         for(unsigned unc = 0; unc < 3; ++unc){
-
+    
             //different location for 2016 and 2017 pu weights
             std::string year = allEras[e].substr(0, 4); 
-
+            std::cout<<"year: "<<year<<std::endl;
             //read data pu distributions 
             TFile* dataFile = TFile::Open( (const TString&) "weights/pileUpData/" + year + "/dataPuHist_" + allEras[e] + "_" + uncertainty[unc] + ".root");
             std::shared_ptr<TH1D> dataPuDist = std::shared_ptr<TH1D>( (TH1D*) dataFile->Get("pileup") );
             dataPuDist->SetDirectory(gROOT);
-
+                
             //make a copy of the data PU profile as the numerator 
             std::shared_ptr<TH1D> numerator = std::shared_ptr<TH1D> ( (TH1D*) dataPuDist->Clone() );
             numerator->SetDirectory(gROOT);
@@ -107,7 +102,7 @@ void extractPuWeights(const Sample& sample){
             //make a copy of the MC PU profile as the denominator
             std::shared_ptr<TH1D> denominator = std::shared_ptr<TH1D>( (TH1D*) mcPuDist->Clone() );
             denominator->SetDirectory(gROOT);
-
+if( sample.is2017()  ) std::cout<<"i see if( sample.is2017()  )"<<std::endl;
 
             //rebin denominator or numerator histogram if needed
             if( sample.is2016()  ){
