@@ -110,9 +110,9 @@ void extractPuWeights(const Sample& sample){
 
 
             //rebin denominator or numerator histogram if needed
-            if( sample.is2016() && (year == "2017") ){
+            if( sample.is2016()  ){
                 numerator = rebinHistogram(numerator, 50);
-            } else if( sample.is2017() && (year == "2016") ){
+            } else if( sample.is2017()  ){
                 denominator = rebinHistogram(denominator, 50);
             }
 
@@ -140,10 +140,10 @@ void extractPuWeights(const Sample& sample){
 int main(int argc, char* argv[]){
 
     //list of samples
-    std::vector< Sample > sampleVector = readSampleList( "sampleLists/samples_dilepCR_2016.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
+    //std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017" );
 
     //read sample lists from txt 
-    std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
+    std::vector< Sample > sampleVector2017 = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
     for( auto& samp : sampleVector2017 ){
         sampleVector.push_back( samp );
     }
