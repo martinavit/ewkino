@@ -61,12 +61,13 @@ void extractPuWeights(const Sample& sample){
    
     //directory where ntuples are stored 
     //const std::string directory = "~/Work/ntuples_tzq/";
-
+    std::cout<<"in pu extarct function: "<<std::endl;
     //read MC pu distribution from given MC sample
     std::shared_ptr<TFile> mcInputFile = sample.getFile( );
     std::shared_ptr<TH1D> mcPuDist = std::shared_ptr<TH1D>( (TH1D*) mcInputFile->Get("blackJackAndHookers/nTrueInteractions") );
     mcPuDist->SetDirectory(gROOT);
     mcInputFile->Close();
+        std::cout<<"after mcInputFile->Close() "<<std::endl;
 
     //normalize histogram to unity
     mcPuDist->Scale(1./mcPuDist->GetSumOfWeights());
