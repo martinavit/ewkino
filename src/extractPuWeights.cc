@@ -135,13 +135,13 @@ if( sample.is2017()  ) std::cout<<"i see if( sample.is2017()  )"<<std::endl;
 int main(int argc, char* argv[]){
 
     //list of samples
-    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017" );
+    //std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017" );
     std::cout<<"in main"<<std::endl;
     //read sample lists from txt 
-    std::vector< Sample > sampleVector2017 = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
-    for( auto& samp : sampleVector2017 ){
-        sampleVector.push_back( samp );
-    }
+    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
+    //for( auto& samp : sampleVector2017 ){
+    //    sampleVector.push_back( samp );
+    //}
 
     for(const auto& sample : sampleVector){
         std::cout<<"in for sample"<<std::endl;
