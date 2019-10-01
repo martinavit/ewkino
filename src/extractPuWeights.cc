@@ -140,13 +140,12 @@ void extractPuWeights(const Sample& sample){
 int main(int argc, char* argv[]){
 
     //list of samples
-    std::vector< Sample > sampleVector = readSampleList( "sampleLists/samples_dilepCR_2016.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
-
+    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
     //read sample lists from txt 
-    std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
-    for( auto& samp : sampleVector2017 ){
+    //std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
+   /* for( auto& samp : sampleVector2017 ){
         sampleVector.push_back( samp );
-    }
+    }*/
 
     for(const auto& sample : sampleVector){
         if(sample.isData()) continue;
