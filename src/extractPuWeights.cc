@@ -1,5 +1,5 @@
 
-/include c++ library classes
+//include c++ library classes
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -137,42 +137,18 @@ void extractPuWeights(const Sample& sample){
     outputFile->Close();
 }
 
-
 int main(int argc, char* argv[]){
 
     //list of samples
-    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
+    std::vector< Sample > sampleVector = readSampleList( "sampleLists/samples_dilepCR_2016.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
 
     //read sample lists from txt 
-   // std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
-   // for( auto& samp : sampleVector2017 ){
-   //     sampleVector.push_back( samp );
-   // }
-
-    for(const auto& sample : sampleVector){
-        if(sample.isData()) continue;
-        std::cout << "Extracting weights for " << sample.getFileName() << std::endl;
-        extractPuWeights(sample);
+    std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
+    for( auto& samp : sampleVector2017 ){
+        sampleVector.push_back( samp );
     }
-    return 0;
-}
-
-
-
-
-int main(int argc, char* argv[]){
-
-    //list of samples
-    //std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017" );
-    std::cout<<"in main"<<std::endl;
-    //read sample lists from txt 
-    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
-    //for( auto& samp : sampleVector2017 ){
-    //    sampleVector.push_back( samp );
-    //}
 
     for(const auto& sample : sampleVector){
-        std::cout<<"in for sample"<<std::endl;
         if(sample.isData()) continue;
         std::cout << "Extracting weights for " << sample.getFileName() << std::endl;
         extractPuWeights(sample);
