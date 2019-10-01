@@ -1,5 +1,5 @@
 
-//include c++ library classes
+/include c++ library classes
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -58,16 +58,20 @@ void extractPuWeights(const Sample& sample){
         return;
     }
 
-   
+    //skip 2016 samples in the 2017 sample list
+    if( sample.is2017() && sample.getFileName().find("Summer16") != std::string::npos){
+        std::cout << "Skipping 2016 sample : " << sample.getFileName() << " from 2017 list, it should also be included in the 2016 list" << std::endl;
+        return;
+    }
+
     //directory where ntuples are stored 
     //const std::string directory = "~/Work/ntuples_tzq/";
-    std::cout<<"in pu extarct function: "<<std::endl;
+
     //read MC pu distribution from given MC sample
     std::shared_ptr<TFile> mcInputFile = sample.getFile( );
     std::shared_ptr<TH1D> mcPuDist = std::shared_ptr<TH1D>( (TH1D*) mcInputFile->Get("blackJackAndHookers/nTrueInteractions") );
     mcPuDist->SetDirectory(gROOT);
     mcInputFile->Close();
-        std::cout<<"after mcInputFile->Close() "<<std::endl;
 
     //normalize histogram to unity
     mcPuDist->Scale(1./mcPuDist->GetSumOfWeights());
@@ -78,21 +82,21 @@ void extractPuWeights(const Sample& sample){
     //categorization by year, run era and ucertainty
     const std::vector< std::string > eras2016 = {"2016Inclusive", "2016B", "2016C", "2016D", "2016E", "2016F", "2016G", "2016H"};
     const std::vector< std::string > eras2017  = {"2017Inclusive", "2017B", "2017C", "2017D", "2017E", "2017F"};
-    std::vector< std::string > allEras = eras2017;
-    //allEras.insert(allEras.begin(), eras2017.begin(), eras2017.end() );
+    std::vector< std::string > allEras = eras2016;
+    allEras.insert(allEras.begin(), eras2017.begin(), eras2017.end() );
     const std::string uncertainty[3] = {"central", "down", "up"};
 
     for(unsigned e = 0; e < allEras.size(); ++e){
         for(unsigned unc = 0; unc < 3; ++unc){
-    
+
             //different location for 2016 and 2017 pu weights
             std::string year = allEras[e].substr(0, 4); 
-            std::cout<<"year: "<<year<<std::endl;
+
             //read data pu distributions 
             TFile* dataFile = TFile::Open( (const TString&) "weights/pileUpData/" + year + "/dataPuHist_" + allEras[e] + "_" + uncertainty[unc] + ".root");
             std::shared_ptr<TH1D> dataPuDist = std::shared_ptr<TH1D>( (TH1D*) dataFile->Get("pileup") );
             dataPuDist->SetDirectory(gROOT);
-                
+
             //make a copy of the data PU profile as the numerator 
             std::shared_ptr<TH1D> numerator = std::shared_ptr<TH1D> ( (TH1D*) dataPuDist->Clone() );
             numerator->SetDirectory(gROOT);
@@ -103,13 +107,13 @@ void extractPuWeights(const Sample& sample){
             //make a copy of the MC PU profile as the denominator
             std::shared_ptr<TH1D> denominator = std::shared_ptr<TH1D>( (TH1D*) mcPuDist->Clone() );
             denominator->SetDirectory(gROOT);
-if( sample.is2017()  ) std::cout<<"i see if( sample.is2017()  )"<<std::endl;
+
 
             //rebin denominator or numerator histogram if needed
-           // if( sample.is2016()  ){
-           //     numerator = rebinHistogram(numerator, 50);
-          //  } else if( sample.is2017()  ){
-                denominator = rebinHistogram(denominator, 100);
+            if( sample.is2016() && (year == "2017") ){
+                numerator = rebinHistogram(numerator, 50);
+            } else if( sample.is2017() && (year == "2016") ){
+                denominator = rebinHistogram(denominator, 50);
             }
 
             //divide data and MC shapes
@@ -132,6 +136,29 @@ if( sample.is2017()  ) std::cout<<"i see if( sample.is2017()  )"<<std::endl;
     }
     outputFile->Close();
 }
+
+
+int main(int argc, char* argv[]){
+
+    //list of samples
+    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/2017.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2017"  );
+
+    //read sample lists from txt 
+   // std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
+   // for( auto& samp : sampleVector2017 ){
+   //     sampleVector.push_back( samp );
+   // }
+
+    for(const auto& sample : sampleVector){
+        if(sample.isData()) continue;
+        std::cout << "Extracting weights for " << sample.getFileName() << std::endl;
+        extractPuWeights(sample);
+    }
+    return 0;
+}
+
+
+
 
 int main(int argc, char* argv[]){
 
