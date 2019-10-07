@@ -51,6 +51,8 @@ class Sample{
         void setData(); 
 
         void set2017();
+            void set2018();
+
 
         void setOptions(const std::string&);
 
@@ -62,6 +64,8 @@ class Sample{
         double xSec;
         bool isDataSample;
         bool is2017Sample;
+        bool is2018Sample;
+
         bool smSignal;
         bool newPhysicsSignal;
 
