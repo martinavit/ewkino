@@ -85,14 +85,13 @@ void extractPuWeights(const Sample& sample){
     std::vector< std::string > allEras = eras2016;
     allEras.insert(allEras.begin(), eras2017.begin(), eras2017.end() );
     const std::string uncertainty[3] = {"central", "down", "up"};
-    year ="2018";
     
     for(unsigned e = 0; e < allEras.size(); ++e){
         for(unsigned unc = 0; unc < 3; ++unc){
 
             //different location for 2016 and 2017 pu weights
             std::string year = allEras[e].substr(0, 4); 
-
+                
             //read data pu distributions 
             TFile* dataFile = TFile::Open( (const TString&) "weights/pileUpData/" + year + "/dataPuHist_" + allEras[e] + "_" + uncertainty[unc] + ".root");
             std::shared_ptr<TH1D> dataPuDist = std::shared_ptr<TH1D>( (TH1D*) dataFile->Get("pileup") );
