@@ -152,6 +152,7 @@ int main(int argc, char* argv[]){
     }*/
 
     for(const auto& sample : sampleVector){
+        std::cout<<sample.getFileName()<<std::endl;
         if(sample.isData()) continue;
         std::cout << "Extracting weights for " << sample.getFileName() << std::endl;
         extractPuWeights(sample);
