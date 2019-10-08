@@ -112,13 +112,13 @@ void extractPuWeights(const Sample& sample){
 
             //rebin denominator or numerator histogram if needed
             if( sample.is2016() && (year == "2017") ){
-                numerator = rebinHistogram(numerator, 50);
+               // numerator = rebinHistogram(numerator, 50);
             }  if( sample.is2017() && (year == "2016") ){
-                denominator = rebinHistogram(denominator, 50);
+               // denominator = rebinHistogram(denominator, 50);
             }
-            if (sample.is2018() || year == "2018"){
-                denominator = rebinHistogram(denominator, 50);
-            }
+            //if (sample.is2018() || year == "2018"){
+             //   denominator = rebinHistogram(denominator, 50);
+          //  }
             std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
             std::cout<< "denominator: "<<denominator->GetNbinsX()<<std::endl;
