@@ -116,7 +116,7 @@ void extractPuWeights(const Sample& sample){
             }  if( sample.is2017() && (year == "2016") ){
                 denominator = rebinHistogram(denominator, 50);
             }
-            else if (sample.is2018()){
+            if (sample.is2018() || year == "2018"){
                 denominator = rebinHistogram(denominator, 50);
             }
 
