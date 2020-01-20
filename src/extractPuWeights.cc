@@ -93,11 +93,17 @@ void extractPuWeights(const Sample& sample){
 
             //different location for 2016 and 2017 pu weights
             std::string year = allEras[e].substr(0, 4); 
-                
+              
+            
+            
             //read data pu distributions 
             TFile* dataFile = TFile::Open( (const TString&) "weights/pileUpData/" + year + "/dataPuHist_" + allEras[e] + "_" + uncertainty[unc] + ".root");
             std::shared_ptr<TH1D> dataPuDist = std::shared_ptr<TH1D>( (TH1D*) dataFile->Get("pileup") );
             dataPuDist->SetDirectory(gROOT);
+            
+            
+            std::cout<<"eras: "<<e<<" .  unc "<<unc<<std::endl;
+            std::cout<<(const TString&) "weights/pileUpData/" + year + "/dataPuHist_" + allEras[e] + "_" + uncertainty[unc] + ".root"<<std::endl;
 
             //make a copy of the data PU profile as the numerator 
             std::shared_ptr<TH1D> numerator = std::shared_ptr<TH1D> ( (TH1D*) dataPuDist->Clone() );
@@ -120,7 +126,8 @@ void extractPuWeights(const Sample& sample){
             //if (sample.is2018() || year == "2018"){
              //   denominator = rebinHistogram(denominator, 50);
           //  }
-            denominator = rebinHistogram(denominator, 50);
+            //numerator = rebinHistogram(numerator, 50);
+            //denominator = rebinHistogram(denominator, 50);
             std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
             std::cout<< "denominator: "<<denominator->GetNbinsX()<<std::endl;
