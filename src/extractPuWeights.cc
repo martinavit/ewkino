@@ -128,7 +128,7 @@ void extractPuWeights(const Sample& sample){
           //  }
             //numerator = rebinHistogram(numerator, 50);
             if (denominator->GetNbinsX() > 50)denominator = rebinHistogram(denominator, 50);
-            std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
+            //std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             //std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
             //std::cout<< "denominator: "<<denominator->GetNbinsX()<<std::endl;
 
@@ -158,7 +158,7 @@ void extractPuWeights(const Sample& sample){
 int main(int argc, char* argv[]){
 
     //list of samples
-    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/allsignals_2016.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2016"  );
+    std::vector< Sample > sampleVector = readSampleList( "/user/mvit/CMSSW_9_4_4/src/HNL_analysis/sampleLists/forPUweights_2016.txt", "/pnfs/iihe/cms/store/user/mvit/samples/FINAL/2016"  );
     //read sample lists from txt 
     //std::vector< Sample > sampleVector2017 = readSampleList( "sampleLists/samples_dilepCR_2017.txt", "/pnfs/iihe/cms/store/user/wverbeke/ntuples_ewkino" );
    /* for( auto& samp : sampleVector2017 ){
