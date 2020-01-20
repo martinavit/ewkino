@@ -80,9 +80,9 @@ void extractPuWeights(const Sample& sample){
     std::shared_ptr<TH1D> puWeights[5][3];
    
     //categorization by year, run era and ucertainty
-    //const std::vector< std::string > eras2016 = {"2016Inclusive", "2016B", "2016C", "2016D", "2016E", "2016F", "2016G", "2016H"};
+    const std::vector< std::string > eras2016 = {"2016Inclusive", "2016B", "2016C", "2016D", "2016E", "2016F", "2016G", "2016H"};
    // const std::vector< std::string > eras2017  = {"2018Inclusive", "2018B", "2018C", "2018D", "2018E"};
-    const std::vector< std::string > eras2016  = {"2018Inclusive", "2018B", "2018C", "2018D", "2018E"};
+    //const std::vector< std::string > eras2016  = {"2018Inclusive", "2018B", "2018C", "2018D", "2018E"};
     //const std::vector< std::string > eras2017  = {"2017Inclusive", "2017B", "2017C", "2017D", "2017E","2017F"};
     std::vector< std::string > allEras = eras2016;
     //allEras.insert(allEras.begin(), eras2017.begin(), eras2017.end() );
@@ -120,7 +120,7 @@ void extractPuWeights(const Sample& sample){
             //if (sample.is2018() || year == "2018"){
              //   denominator = rebinHistogram(denominator, 50);
           //  }
-            //denominator = rebinHistogram(denominator, 50);
+            denominator = rebinHistogram(denominator, 50);
             std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
             std::cout<< "denominator: "<<denominator->GetNbinsX()<<std::endl;
