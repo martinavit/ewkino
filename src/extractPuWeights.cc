@@ -127,7 +127,7 @@ void extractPuWeights(const Sample& sample){
              //   denominator = rebinHistogram(denominator, 50);
           //  }
             //numerator = rebinHistogram(numerator, 50);
-            denominator = rebinHistogram(denominator, 50);
+            if (denominator->GetNbinsX() > 50)denominator = rebinHistogram(denominator, 50);
             std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
             std::cout<< "denominator: "<<denominator->GetNbinsX()<<std::endl;
@@ -144,6 +144,7 @@ void extractPuWeights(const Sample& sample){
             
             //needed to set ownership to memory?
             dataFile->Close();
+            std::cout<<"after closing"<<std::endl;
         }
     }
 
