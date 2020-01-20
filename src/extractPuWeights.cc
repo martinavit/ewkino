@@ -77,7 +77,7 @@ void extractPuWeights(const Sample& sample){
     mcPuDist->Scale(1./mcPuDist->GetSumOfWeights());
 
     //pu weights
-    std::shared_ptr<TH1D> puWeights[5][3];
+    std::shared_ptr<TH1D> puWeights[8][3];
    
     //categorization by year, run era and ucertainty
     const std::vector< std::string > eras2016 = {"2016Inclusive", "2016B", "2016C", "2016D", "2016E", "2016F", "2016G", "2016H"};
