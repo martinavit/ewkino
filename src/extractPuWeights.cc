@@ -127,8 +127,8 @@ void extractPuWeights(const Sample& sample){
              //   denominator = rebinHistogram(denominator, 50);
           //  }
             //numerator = rebinHistogram(numerator, 50);
-            if (denominator->GetNbinsX() < 50)denominator = rebinHistogram(denominator, 100);
-            if (numerator->GetNbinsX() < 50)numerator = rebinHistogram(numerator, 100);
+            if (denominator->GetNbinsX() > 60)denominator = rebinHistogram(denominator, 50);
+            //if (numerator->GetNbinsX() < 50)numerator = rebinHistogram(numerator, 100);
 
             //std::cout<<sample.is2016()<<" "<< sample.is2017()<< " "<<sample.is2018()<<std::endl;
             //std::cout<< "numerator: "<<numerator->GetNbinsX()<<std::endl;
