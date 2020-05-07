@@ -50,12 +50,12 @@ skimSample(){                                           #function to skim one sa
     rm $submit                                          #remove temporary submit file
 }
 
-baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2017_mcA7may
+baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2016_fromTom
 cd $baseFolder
 foldersData=*/*2016_legacy9March
 foldersMC=2016_94Mc9March2/*/*2016_94Mc9March2
 foldersData17=*/*2017_rereco9March
-foldersMC17=*/*2017_mcA7may
+foldersMC17=*/*2016_fromTom
 foldersLeptonMva16=*CUETP8M1*/*leptonMvaTrainingList-v5
 foldersLeptonMva17=TTTo*CP5*/*leptonMvaTrainingList-v5
 foldersFR_dataEG_2017=*/*2017_FR_EG22MarchFR
