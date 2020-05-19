@@ -36,7 +36,6 @@ Double_t        _lheWeight[110];   //[_nLheWeights]
 UInt_t          _nPsWeights;
 Double_t        _psWeight[14];   //[_nPsWeights]
 UInt_t          _ttgEventType;
-UInt_t          _zgEventType;
 Double_t        _gen_met;
 Double_t        _gen_metPhi;
 UInt_t          _gen_nPh;
@@ -547,7 +546,6 @@ Double_t        _metSignificance;
    TBranch        *b__nPsWeights;   //!
    TBranch        *b__psWeight;   //!
    TBranch        *b__ttgEventType;   //!
-   TBranch        *b__zgEventType;   //!
    TBranch        *b__gen_met;   //!
    TBranch        *b__gen_metPhi;   //!
    TBranch        *b__gen_nPh;   //!
