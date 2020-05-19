@@ -51,10 +51,10 @@ skimSample(){                                           #function to skim one sa
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2016_fromTom
-baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
+#baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTomMC=DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/*displaced_2016_v1
+folderTomMC=*/*2016_fromTom
 foldersData=*/*2016_legacy9March
 foldersMC=2016_94Mc9March2/*/*2016_94Mc9March2
 foldersData17=*/*2017_rereco9March
