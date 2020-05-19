@@ -754,6 +754,8 @@ Double_t        _metSignificance;
    TBranch        *b__lMatchVertexX;   //!
    TBranch        *b__lMatchVertexY;   //!
    TBranch        *b__lMatchVertexZ;   //!
+   TBranch        *b__hasInternalConversion;
+   TBranch        *b__zgEventType;
    TBranch        *b__lPtCorr;   //!
    TBranch        *b__lPtScaleUp;   //!
    TBranch        *b__lPtScaleDown;   //!
