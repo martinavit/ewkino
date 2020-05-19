@@ -240,6 +240,8 @@ Double_t        _lMatchPhi[nL_max];  //[_nL]
 Double_t        _lMatchVertexX[nL_max];  //[_nL]
 Double_t        _lMatchVertexY[nL_max];  //[_nL]
 Double_t        _lMatchVertexZ[nL_max];  //[_nL]
+Bool_t           _hasInternalConversion[nL_max];
+Int_t            _zgEventType[nL_max];  
 Double_t        _lPtCorr[nL_max];  //[_nLight]
 Double_t        _lPtScaleUp[nL_max];  //[_nLight]
 Double_t        _lPtScaleDown[nL_max];  //[_nLight]
