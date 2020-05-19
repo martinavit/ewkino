@@ -50,8 +50,11 @@ skimSample(){                                           #function to skim one sa
     rm $submit                                          #remove temporary submit file
 }
 
-baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2016_fromTom
+#baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2016_fromTom
+baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
+
 cd $baseFolder
+folderTomMC=*/*displaced_2016_v1
 foldersData=*/*2016_legacy9March
 foldersMC=2016_94Mc9March2/*/*2016_94Mc9March2
 foldersData17=*/*2017_rereco9March
@@ -63,6 +66,6 @@ foldersFR_SingleM_2017=*/*2017_FRSingleM22MarchFR
 foldersFR_DoubleM_2017=*/*2017_FRDoubleM22MarchFR
 foldersFR_mc_2017=*/*2017_FRmc22MarchFR
 #for d in $foldersMC $foldersMC17 $foldersData $foldersData17                        #skim all samples 
-for d in $foldersMC17
+for d in $folderTomMC
     do skimSample $d $baseFolder
 done
