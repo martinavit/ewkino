@@ -594,8 +594,8 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
       outputTree->Branch("_lMatchVertexX",              &_lMatchVertexX,                "_lMatchVertexX[_nL]/D");
       outputTree->Branch("_lMatchVertexY",              &_lMatchVertexY,                "_lMatchVertexY[_nL]/D");
       outputTree->Branch("_lMatchVertexZ",              &_lMatchVertexZ,                "_lMatchVertexZ[_nL]/D");
-        outputTree->Branch("_hasInternalConversion",    &_hasInternalConversion,    "_hasInternalConversion[_nL]/O");
-        outputTree->Branch("_zgEventType",               &_zgEventType,               "_zgEventType[_nL]/I");
+        outputTree->Branch("_hasInternalConversion",    &_hasInternalConversion,    "_hasInternalConversion/O");
+        outputTree->Branch("_zgEventType",               &_zgEventType,               "_zgEventType/i");
 
     }
 }
