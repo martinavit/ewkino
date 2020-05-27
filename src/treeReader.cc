@@ -359,8 +359,8 @@ void treeReader::initTree(TTree *tree, const bool isData, const bool Is2016, con
         fChain->SetBranchAddress("_lMatchVertexX", _lMatchVertexX, &b__lMatchVertexX);
         fChain->SetBranchAddress("_lMatchVertexY", _lMatchVertexY, &b__lMatchVertexY);
         fChain->SetBranchAddress("_lMatchVertexZ", _lMatchVertexZ, &b__lMatchVertexZ);
-        fChain->SetBranchAddress("_hasInternalConversion", _hasInternalConversion, &b__hasInternalConversion);
-        fChain->SetBranchAddress("_zgEventType", _zgEventType, &b__zgEventType);
+        fChain->SetBranchAddress("_hasInternalConversion", &_hasInternalConversion, &b__hasInternalConversion);
+        fChain->SetBranchAddress("_zgEventType", &_zgEventType, &b__zgEventType);
 
         
         
@@ -594,7 +594,7 @@ void treeReader::setOutputTree(TTree* outputTree, const bool isData, const bool 
       outputTree->Branch("_lMatchVertexX",              &_lMatchVertexX,                "_lMatchVertexX[_nL]/D");
       outputTree->Branch("_lMatchVertexY",              &_lMatchVertexY,                "_lMatchVertexY[_nL]/D");
       outputTree->Branch("_lMatchVertexZ",              &_lMatchVertexZ,                "_lMatchVertexZ[_nL]/D");
-        outputTree->Branch("_hasInternalConversion",    &_hasInternalConversion,    "_hasInternalConversion/O");
+        outputTree->Branch("_hasInternalConversion",    &_hasInternalConversion,    "_hasInternalConversion/i");
         outputTree->Branch("_zgEventType",               &_zgEventType,               "_zgEventType/i");
 
     }
