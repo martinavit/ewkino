@@ -20,8 +20,9 @@ skimSample(){                                           #function to skim one sa
         name="${name}_RECOPF"
     fi
 
-    if [[ $1 = *"Fall17"* ]] || [[ $1 = *"Run2017"* ]]; then
-        name="${name}_Fall17"
+    if [[ $1 = *"Fall17"* ]] || [[ $1 = *"Run2017"* ]] || [[ $1 = *"2017"* ]]; then
+        #name="${name}_Fall17"
+        name="${name}_2017"
     else 
         name="${name}_2016"
     fi
@@ -56,8 +57,8 @@ skimSample(){                                           #function to skim one sa
 baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTestmu=HeavyNeutrino_trilepton_M-*mu_massiveAndCKM_LO/*16*displaced_signals_v4
-folderTeste=HeavyNeutrino_trilepton_M-*e_massiveAndCKM_LO/*16*displaced_signals_v4
+folderTestmu=HeavyNeutrino_trilepton_M-*mu_massiveAndCKM_LO/*17*displaced_signals_v4
+folderTeste=HeavyNeutrino_trilepton_M-*e_massiveAndCKM_LO/*17*displaced_signals_v4
 #folderTest=SingleMuon/*displaced_2018_v2
 folderTomMC=*/*displaced_2018_v1
 foldersData=*/*2016_legacy9March
