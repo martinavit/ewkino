@@ -23,7 +23,7 @@ skimSample(){                                           #function to skim one sa
     if [[ $1 = *"Fall17"* ]] || [[ $1 = *"Run2017"* ]]; then
         name="${name}_Fall17"
     else 
-        name="${name}_Summer16"
+        name="${name}_2016"
     fi
     echo "$name"
     outputDir=~/Work/ntuples_temp_${name}
