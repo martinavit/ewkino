@@ -22,10 +22,10 @@ skimSample(){                                           #function to skim one sa
 
     if [[ $1 = *"Fall17"* ]] || [[ $1 = *"Run2017"* ]] || [[ $1 = *"2017"* ]]; then
         #name="${name}_Fall17"
-        #name="${name}_2017"
+        name="${name}_2017"
     #if [[ $1 = *"18Mini"* ]]; then
         #name="${name}_Fall17"
-        name="${name}_2018"    
+        #name="${name}_2018"    
     else 
         name="${name}_2016"
     fi
