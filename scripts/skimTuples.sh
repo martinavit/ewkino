@@ -60,7 +60,7 @@ skimSample(){                                           #function to skim one sa
 baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTestmu=HeavyNeutrino_trilepton_M-1*mu_massiveAndCKM_LO*/*17*displaced_signals_v4
+folderTestmu=SingleMuon/*v1_displaced_2016_v2
 folderTeste=HeavyNeutrino_trilepton_M-1*e_massiveAndCKM_LO*/*17*displaced_signals_v4
 #folderTest=SingleMuon/*displaced_2018_v2
 folderTomMC=*/*displaced_2018_v1
@@ -75,6 +75,6 @@ foldersFR_SingleM_2017=*/*2017_FRSingleM22MarchFR
 foldersFR_DoubleM_2017=*/*2017_FRDoubleM22MarchFR
 foldersFR_mc_2017=*/*2017_FRmc22MarchFR
 #for d in $foldersMC $foldersMC17 $foldersData $foldersData17                        #skim all samples 
-for d in $folderTestmu $folderTeste
+for d in $folderTestmu 
     do skimSample $d $baseFolder
 done
