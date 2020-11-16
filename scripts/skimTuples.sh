@@ -38,9 +38,9 @@ skimSample(){                                           #function to skim one sa
     makeSubmit $submit $2                               #make temporary submission script
 
     count=0                                             #file counter
-    #subdir=$(ls $1 | sort -r | tail -1)
-    #files=$1/$subdir/*/*.root
-    files=${1}/*/*/*root
+    subdir=$(ls $1 | sort -r | tail -1)
+    files=$1/$subdir/*/*.root
+    #files=${1}/*/*/*root
     for f in $files
         do if (( $count % 50 == 0)); then
             submitJob $submit "12:00:00"
@@ -75,6 +75,6 @@ foldersFR_SingleM_2017=*/*2017_FRSingleM22MarchFR
 foldersFR_DoubleM_2017=*/*2017_FRDoubleM22MarchFR
 foldersFR_mc_2017=*/*2017_FRmc22MarchFR
 #for d in $foldersMC $foldersMC17 $foldersData $foldersData17                        #skim all samples 
-for d in $folderTestmu 
+for d in $folderTestmu $folderTeste
     do skimSample $d $baseFolder
 done
