@@ -53,14 +53,14 @@ skimSample(){                                           #function to skim one sa
         count=$((count+1))
     done
     submitJob $submit "12:00:00"
-    rm $submit                                          #remove temporary submit file
+    #rm $submit                                          #remove temporary submit file
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2018_fromTom
 baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTestmu=SingleMuon/*v1_displaced_2016_v2
+folderTestmu=SingleMuon/crab_Run2016B-17Jul2018_ver2-v1_displaced_2016_v2
 folderTeste=HeavyNeutrino_trilepton_M-1*e_massiveAndCKM_LO*/*17*displaced_signals_v4
 #folderTest=SingleMuon/*displaced_2018_v2
 folderTomMC=*/*displaced_2018_v1
