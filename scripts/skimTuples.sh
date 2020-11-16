@@ -53,7 +53,7 @@ skimSample(){                                           #function to skim one sa
         count=$((count+1))
     done
     submitJob $submit "12:00:00"
-    #rm $submit                                          #remove temporary submit file
+    rm $submit                                          #remove temporary submit file
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2018_fromTom
