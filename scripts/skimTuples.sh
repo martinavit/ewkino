@@ -2,9 +2,12 @@
 
 #include bash functiosn to set up CMSSW
 source setCMSSW.sh
-
+echo "at the beginning"
+echo "before cwd"
+echo "$(pwd)"
 cwd=$(pwd)                                          #current working directory needed to locate code 
-echo $pwd
+echo "cwd"
+echo cwd
 skimSample(){                                           #function to skim one sample
     name="${1%/*}"                                      #remove everything before the last "/" in the path to the sample
 
@@ -29,14 +32,16 @@ skimSample(){                                           #function to skim one sa
     else 
         name="${name}_2016"
     fi
+    echo "name -->"
     echo "$name"
-    echo "this is it the pwd $pwd"
+    echo "this is it the pwd" $pwd 
 
     outputDir=~/Work/ntuples_temp_${name}
     echo "~/Work/ntuples_temp_${name}"
     if [ ! -d "$outputDir" ]; then                      #make output directory if it doesn't exist 
         mkdir -p $outputDir
     fi
+    echo "before submit = skimjob.sh"
     submit=~/skimJob.sh
     makeSubmit $submit $2                               #make temporary submission script
 
@@ -45,6 +50,7 @@ skimSample(){                                           #function to skim one sa
     files=$1/$subdir/*/*.root
     #files=${1}/*/*/*root
     for f in $files
+        echo "f"
         do if (( $count % 50 == 0)); then
             submitJob $submit "12:00:00"
             makeSubmit $submit $2
@@ -52,8 +58,8 @@ skimSample(){                                           #function to skim one sa
         #filename=${f##*/}                               
         filename=${f///}
         filename=${filename%.*}
+        echo filename 
         echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt" >> $submit
-        echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt"
         count=$((count+1))
     done
     submitJob $submit "12:00:00"
