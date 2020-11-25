@@ -4,7 +4,7 @@
 source setCMSSW.sh
 
 cwd=$(pwd)                                          #current working directory needed to locate code 
-
+echo $pwd
 skimSample(){                                           #function to skim one sample
     name="${1%/*}"                                      #remove everything before the last "/" in the path to the sample
 
@@ -30,7 +30,10 @@ skimSample(){                                           #function to skim one sa
         name="${name}_2016"
     fi
     echo "$name"
+    echo $pwd
+
     outputDir=~/Work/ntuples_temp_${name}
+    echo outputDir
     if [ ! -d "$outputDir" ]; then                      #make output directory if it doesn't exist 
         mkdir -p $outputDir
     fi
@@ -53,7 +56,7 @@ skimSample(){                                           #function to skim one sa
         count=$((count+1))
     done
     submitJob $submit "12:00:00"
-    rm $submit                                          #remove temporary submit file
+    $submit                                          #remove temporary submit file
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2018_fromTom
