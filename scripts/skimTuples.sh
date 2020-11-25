@@ -2,11 +2,7 @@
 
 #include bash functiosn to set up CMSSW
 source setCMSSW.sh
-echo "at the beginning"
-echo "before cwd"
 echo "$(pwd)"
-echo "cwd"
-echo "${cwd}"
 cd /user/mvit/CMSSW_10_2_9/src/ewkino/scripts
 cmsenv
 cwd=$(pwd)                                          #current working directory needed to locate code 
@@ -47,9 +43,7 @@ skimSample(){                                           #function to skim one sa
     fi
     #echo "before submit = skimjob.sh"
     submit=~/skimJob.sh
-    echo "~/skimJob.sh"
     makeSubmit $submit $2                               #make temporary submission script
-    echo "makeSubmit $submit $2"
     count=0                                             #file counter
     subdir=$(ls $1 | sort -r | tail -1)
     files=$1/$subdir/*/*.root
@@ -65,17 +59,16 @@ skimSample(){                                           #function to skim one sa
         echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt" >> $submit
         count=$((count+1))
     done
-    echo "before submitJob $submit"
     submitJob $submit "12:00:00"
-    #rm $submit                                          #remove temporary submit file
+    rm $submit                                          #remove temporary submit file
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2018_fromTom
 baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTestmu=HeavyNeutrino_trilepton_M-9*mu_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
-folderTeste=HeavyNeutrino_trilepton_M-9*e_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
+folderTestmu=HeavyNeutrino_trilepton_M-*mu_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
+folderTeste=HeavyNeutrino_trilepton_M-*e_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
 #folderTest=SingleMuon/*displaced_2018_v2
 folderTomMC=*/*displaced_2018_v1
 foldersData=*/*2016_legacy9March
