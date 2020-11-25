@@ -5,10 +5,11 @@ source setCMSSW.sh
 echo "at the beginning"
 echo "before cwd"
 echo "$(pwd)"
-cwd=$(pwd)                                          #current working directory needed to locate code 
 echo "cwd"
 echo "${cwd}"
 cd /user/mvit/CMSSW_10_2_9/src/ewkino/scripts
+cwd=$(pwd)                                          #current working directory needed to locate code 
+
 skimSample(){                                           #function to skim one sample
     name="${1%/*}"                                      #remove everything before the last "/" in the path to the sample
 
