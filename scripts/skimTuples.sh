@@ -50,7 +50,6 @@ skimSample(){                                           #function to skim one sa
     files=$1/$subdir/*/*.root
     #files=${1}/*/*/*root
     for f in $files
-        echo "f"
         do if (( $count % 50 == 0)); then
             submitJob $submit "12:00:00"
             makeSubmit $submit $2
