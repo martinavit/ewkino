@@ -7,7 +7,7 @@ echo "before cwd"
 echo "$(pwd)"
 cwd=$(pwd)                                          #current working directory needed to locate code 
 echo "cwd"
-echo cwd
+echo "${cwd}"
 skimSample(){                                           #function to skim one sample
     name="${1%/*}"                                      #remove everything before the last "/" in the path to the sample
 
