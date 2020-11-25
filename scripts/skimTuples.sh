@@ -64,8 +64,8 @@ skimSample(){                                           #function to skim one sa
 baseFolder=/pnfs/iihe/cms/store/user/tomc/heavyNeutrino
 
 cd $baseFolder
-folderTestmu=HeavyNeutrino_trilepton_M-*mu_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
-folderTeste=HeavyNeutrino_trilepton_M-*e_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
+folderTestmu=HeavyNeutrino_trilepton_M-9*mu_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
+folderTeste=HeavyNeutrino_trilepton_M-9*e_Dirac_massiveAndCKM_LO*/*17*displaced_signals_v4
 #folderTest=SingleMuon/*displaced_2018_v2
 folderTomMC=*/*displaced_2018_v1
 foldersData=*/*2016_legacy9March
