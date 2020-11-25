@@ -8,6 +8,7 @@ echo "$(pwd)"
 echo "cwd"
 echo "${cwd}"
 cd /user/mvit/CMSSW_10_2_9/src/ewkino/scripts
+cmsenv
 cwd=$(pwd)                                          #current working directory needed to locate code 
 
 skimSample(){                                           #function to skim one sample
