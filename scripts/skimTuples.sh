@@ -30,10 +30,10 @@ skimSample(){                                           #function to skim one sa
         name="${name}_2016"
     fi
     echo "$name"
-    echo $pwd
+    echo "this is it the pwd $pwd"
 
     outputDir=~/Work/ntuples_temp_${name}
-    echo outputDir
+    echo "~/Work/ntuples_temp_${name}"
     if [ ! -d "$outputDir" ]; then                      #make output directory if it doesn't exist 
         mkdir -p $outputDir
     fi
@@ -53,6 +53,7 @@ skimSample(){                                           #function to skim one sa
         filename=${f///}
         filename=${filename%.*}
         echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt" >> $submit
+        echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt"
         count=$((count+1))
     done
     submitJob $submit "12:00:00"
