@@ -34,7 +34,8 @@ skimSample(){                                           #function to skim one sa
     fi
     echo "name -->"
     echo "$name"
-    echo "this is it the pwd" $pwd 
+    echo "this is it the cwd" 
+    echo "${cwd}" 
 
     outputDir=~/Work/ntuples_temp_${name}
     echo "~/Work/ntuples_temp_${name}"
@@ -60,8 +61,9 @@ skimSample(){                                           #function to skim one sa
         echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt" >> $submit
         count=$((count+1))
     done
+    echo "before submitJob $submit"
     submitJob $submit "12:00:00"
-    $submit                                          #remove temporary submit file
+    #rm $submit                                          #remove temporary submit file
 }
 
 #baseFolder=/pnfs/iihe/cms/store/user/mvit/heavyNeutrino/2018_fromTom
