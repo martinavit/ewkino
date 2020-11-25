@@ -47,6 +47,7 @@ skimSample(){                                           #function to skim one sa
     fi
     #echo "before submit = skimjob.sh"
     submit=~/skimJob.sh
+    echo "~/skimJob.sh"
     makeSubmit $submit $2                               #make temporary submission script
     echo "makeSubmit $submit $2"
     count=0                                             #file counter
