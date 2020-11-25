@@ -3,7 +3,7 @@
 CMSSW="CMSSW_10_2_9"
 
 #set up a CMSSW environment if there is none
-if [ ! -d /user/${USER}/wd/${CMSSW} ]; then
+if [ ! -d /user/${USER}/${CMSSW} ]; then
     cd ~
     cmsrel $CMSSW
     cd ${CMSSW}/src
