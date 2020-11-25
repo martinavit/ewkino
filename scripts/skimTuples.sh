@@ -53,7 +53,7 @@ skimSample(){                                           #function to skim one sa
     #files=${1}/*/*/*root
     for f in $files
         do if (( $count % 50 == 0)); then
-            ubmitJob $submit "12:00:00"
+            submitJob $submit "12:00:00"
             makeSubmit $submit $2
         fi
         #filename=${f##*/}                               
