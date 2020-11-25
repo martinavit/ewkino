@@ -95,8 +95,8 @@ void treeReader::skimTree(const std::string& fileName, std::string outputDirecto
 
 int main(int argc, char* argv[]){
     treeReader reader;
-    bool isData = true;
-    bool Is2016 = true;
+    bool isData = false;
+    bool Is2016 = false;
     bool IsFR = false;
     if(argc != 0){
         std::vector<std::string> datasets = {"SingleElectron", "SingleMuon", "DoubleEG", "DoubleMuon", "MuonEG", "EGamma"}; 
