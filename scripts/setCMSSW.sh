@@ -12,7 +12,7 @@ fi
 
 #set up CMSSW in submission script
 setCMSSW(){
-    echo "cd /user/${USER}/wd/${CMSSW}/src" >> $1
+    echo "cd /user/${USER}/${CMSSW}/src" >> $1
     echo "source /cvmfs/cms.cern.ch/cmsset_default.sh" >> $1
     echo "eval \`scram runtime -sh\`" >> $1
 }
