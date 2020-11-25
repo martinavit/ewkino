@@ -46,7 +46,7 @@ skimSample(){                                           #function to skim one sa
     #echo "before submit = skimjob.sh"
     submit=~/skimJob.sh
     makeSubmit $submit $2                               #make temporary submission script
-
+    echo "makeSubmit $submit $2"
     count=0                                             #file counter
     subdir=$(ls $1 | sort -r | tail -1)
     files=$1/$subdir/*/*.root
