@@ -6,7 +6,6 @@ echo "at the beginning"
 echo "before cwd"
 echo "$(pwd)"
 cwd=$(pwd)                                          #current working directory needed to locate code 
-cwd = "/user/mvit/CMSSW_10_2_9/src/ewkino"
 echo "cwd"
 echo "${cwd}"
 skimSample(){                                           #function to skim one sample
