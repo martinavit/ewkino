@@ -57,7 +57,8 @@ skimSample(){                                           #function to skim one sa
         #filename=${f##*/}                               
         filename=${f///}
         filename=${filename%.*}
-        echo filename 
+        echo "${filename}"
+        echo "${cwd}/../skimTree $f $outputDir"
         echo "${cwd}/../skimTree $f $outputDir/ > ${outputDir}/${filename}_log.txt 2> ${outputDir}/${filename}_err.txt" >> $submit
         count=$((count+1))
     done
